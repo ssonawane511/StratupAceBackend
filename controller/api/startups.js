@@ -7,7 +7,7 @@ const Startup = require("../../models/Startups");
 // @route   GET api/startups/statupace
 // @desc    get the startup details by handle
 // @access  Public
-router.get("/:handle", (req, res) => {
+router.get("/handel/:handle", (req, res) => {
   const { handle } = req.params;
   console.log(handle);
   Startup.findOne({ handle })
@@ -32,7 +32,7 @@ router.get("/test", (req, res) => {
 // @route   POST api/startups/statupace
 // @desc    check handle exits or not
 // @access  Public
-router.post("/:handle", (req, res) => {
+router.post("/handel/:handle", (req, res) => {
   const { handle } = req.params;
   Startup.findOne({ handle }).then((startup) => {
     if (startup) {
