@@ -23,6 +23,12 @@ router.get("/:handle", (req, res) => {
     });
 });
 
+router.get("/test", (req, res) => {
+  res.json({
+    test: "startup api running",
+  });
+});
+
 // @route   POST api/startups/statupace
 // @desc    check handle exits or not
 // @access  Public
