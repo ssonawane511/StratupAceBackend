@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "fname": "Sagar",
+    "mname": "raju",
+    "lname": "sonawane",
+    "isVerifed": false,
+    "mail": "ssonawane511@gmail.com",
+    "phone": 9168178839,
+    "dob": 1613212741497,
+    "residential_Address": "sadsadasaasddasdasd adasdsadasd asdasd asda adasd sdsd",
+    "company_Address": "Sadasdasdasdasddasdasdasdad",
+    "profession": "Student",
+    "qualification": "other",
+    "perious_startup": "ASdasdasdas asdasd asdasdadasd a adsa asd ad a ",
+    "description": "i am sagar sonawane ",
+    "startupDetails": {
+      "domain": "it Tech",
+      "industryType": "product based",
+      "numberOfColleaugues": "6"
+    }
+  },
+  {
+    "id": 2,
+    "fname": "pratik ",
+    "mname": "pramod",
+    "lname": "patil",
+    "isVerifed": false,
+    "mail": "pratikpatil@gmail.com",
+    "phone": 5541454411,
+    "dob": 1613212741497,
+    "residential_Address": "sadsadasaasddasdasd adasdsadasd asdasd asda adasd sdsd",
+    "company_Address": "Sadasdasdasdasddasdasdasdad",
+    "profession": "Student",
+    "qualification": "other",
+    "perious_startup": "ASdasdasdas asdasd asdasdadasd a adsa asd ad a ",
+    "description": "i am sagar sonawane ",
+    "startupDetails": {
+      "domain": "it Tech",
+      "industryType": "product based",
+      "numberOfColleaugues": "6"
+    }
+  },
+  {
+    "id": 3,
+    "fname": "pooja",
+    "mname": "ritik",
+    "lname": "patil",
+    "isVerifed": false,
+    "mail": "poojaritik@gmail.com",
+    "phone": 9168178839,
+    "dob": 1613212741497,
+    "residential_Address": "sadsadasaasddasdasd adasdsadasd asdasd asda adasd sdsd",
+    "company_Address": "Sadasdasdasdasddasdasdasdad",
+    "profession": "Student",
+    "qualification": "other",
+    "perious_startup": "ASdasdasdas asdasd asdasdadasd a adsa asd ad a ",
+    "description": "i am sagar sonawane ",
+    "startupDetails": {
+      "domain": "it Tech",
+      "industryType": "product based",
+      "numberOfColleaugues": "6"
+    }
+  }
+]
