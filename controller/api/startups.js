@@ -7,7 +7,7 @@ const Startup = require("../../models/Startups");
 // @route   GET api/startups/statupace
 // @desc    get the startup details by handle
 // @access  Public
-router.get("/handel/:handle", (req, res) => {
+router.get("/handle/:handle", (req, res) => {
   const { handle } = req.params;
   console.log(handle);
   Startup.findOne({ handle })
@@ -32,7 +32,7 @@ router.get("/test", (req, res) => {
 // @route   POST api/startups/statupace
 // @desc    check handle exits or not
 // @access  Public
-router.post("/handel/:handle", (req, res) => {
+router.post("/handle/:handle", (req, res) => {
   const { handle } = req.params;
   Startup.findOne({ handle }).then((startup) => {
     if (startup) {
@@ -65,7 +65,16 @@ router.post("/", (req, res) => {
   } = req.body;
 
   // this to check existing startup
-  Startup.findOne({ mail }).then((startup) => {
+  Startup.findOne({
+    $or: [
+      {
+        mail: mail,
+      },
+      {
+        handle: handle,
+      },
+    ],
+  }).then((startup) => {
     if (startup) {
       return res.status(400).json({ message: "startup already exists" });
     } else {

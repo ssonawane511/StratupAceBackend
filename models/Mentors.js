@@ -3,9 +3,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
-const StartupSchema = new Schema(
+const MentorSchema = new Schema(
   {
-    role: { type: String, default: 100 },
+    role: { type: String, default: 400 },
     handle: { type: String, required: true },
     fname: { type: String, required: true },
     mname: { type: String, required: true },
@@ -19,9 +19,8 @@ const StartupSchema = new Schema(
     company_Address: { type: String, required: true },
     profession: { type: String, required: true },
     qualification: { type: String, required: true },
-    perious_startup: { type: String, required: true },
     description: { type: String, required: true },
-    startupDetails: {
+    MentorDetails: {
       domain: { type: String, required: true },
       industryType: { type: String, required: true },
       numberOfColleaugues: { type: Number, required: true },
@@ -29,8 +28,8 @@ const StartupSchema = new Schema(
     updated: { type: Date, default: Date.now },
   },
   {
-    collection: "startups",
+    collection: "Mentors",
   }
 );
 
-module.exports = Startups = mongoose.model("startups", StartupSchema);
+module.exports = Mentors = mongoose.model("Mentors", MentorSchema);
