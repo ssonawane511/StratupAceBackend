@@ -24,7 +24,7 @@ const StartupSchema = new Schema(
     startupDetails: {
       domain: { type: String, required: true },
       industryType: { type: String, required: true },
-      numberOfColleaugues: { type: Number, required: true },
+      numberOfColleaugues: { type: String, required: true },
     },
     updated: { type: Date, default: Date.now },
   },

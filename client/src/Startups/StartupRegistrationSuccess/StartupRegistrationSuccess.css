@@ -1,0 +1,14 @@
+/** @format */
+
+.successcontainer {
+  height: 100vh;
+  align-items: center;
+}
+.successWindow {
+  border: 1px solid #ccc;
+  max-width: 400px;
+  padding: 20px 30px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.123);
+}

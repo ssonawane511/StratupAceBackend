@@ -9,13 +9,54 @@ const Startup = require("../../models/Startups");
 // @access  Public
 router.get("/handle/:handle", (req, res) => {
   const { handle } = req.params;
-  console.log(handle);
+
   Startup.findOne({ handle })
     .then((startups) => {
       if (startups) {
-        res.status(200).json(startups);
+        res
+          .status(200)
+          .json({ success: false, message: "Handle already exists" });
       } else {
-        res.status(400).json({ message: "Startup Does not exists" });
+        res
+          .status(200)
+          .json({ success: true, message: "Handle Does not exists" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
+// @route   GET api/startups/email
+// @desc    get the startup details by handle
+// @access  Public
+router.post("/email", (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  Startup.findOne({ mail: email })
+    .then((startup) => {
+      if (startup) {
+        res.status(200).json({ success: true, data: startup });
+      } else {
+        res
+          .status(200)
+          .json({ success: false, message: "Startup Does not Exist" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
+router.post("/is_profile_exist", (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  Startup.findOne({ mail: email })
+    .then((startup) => {
+      if (startup) {
+        res.status(200).json({ success: true });
+      } else {
+        res.status(200).json({ success: false });
       }
     })
     .catch((err) => {
@@ -26,20 +67,6 @@ router.get("/handle/:handle", (req, res) => {
 router.get("/test", (req, res) => {
   res.json({
     test: "startup api running",
-  });
-});
-
-// @route   POST api/startups/statupace
-// @desc    check handle exits or not
-// @access  Public
-router.post("/handle/:handle", (req, res) => {
-  const { handle } = req.params;
-  Startup.findOne({ handle }).then((startup) => {
-    if (startup) {
-      res.status(400).json({ message: "handel already exists" });
-    } else {
-      res.status(200).json({ message: "avaliable" });
-    }
   });
 });
 
@@ -76,7 +103,10 @@ router.post("/", (req, res) => {
     ],
   }).then((startup) => {
     if (startup) {
-      return res.status(400).json({ message: "startup already exists" });
+      console.log(startup);
+      return res
+        .status(200)
+        .json({ success: false, message: "Company already registered" });
     } else {
       // if not exists then save
       const newStartup = new Startup({
@@ -97,7 +127,9 @@ router.post("/", (req, res) => {
       });
       newStartup.save();
       console.log("new startup", newStartup);
-      return res.status(200).json({ message: "created" });
+      return res
+        .status(200)
+        .json({ success: true, message: "Registered SuccessFull" });
     }
   });
 });
