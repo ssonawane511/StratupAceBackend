@@ -7,6 +7,23 @@ const Mentor = require("../../models/Mentors");
 // @route   GET api/Mentors/statupace
 // @desc    get the Mentor details by handle
 // @access  Public
+
+router.get("/mentors", (req, res) => {
+  Mentor.find({})
+  .then((Mentors) => {
+    if (Mentors) {
+      console.log(mentors);
+      return res.status(200).json({success: true, data: Mentors});
+    }
+    else{
+      return res.status(500).json({message: "No records found!"});
+    }
+  })
+  .catch((err) => {
+    res.error(500).json({error: "Error occured!"});
+  })
+});
+
 router.get("/handle/:handle", (req, res) => {
   const { handle } = req.params;
   console.log(handle);
