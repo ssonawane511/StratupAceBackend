@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const startups = require("./controller/api/startups");
 const mentors = require("./controller/api/mentors");
+const volunteers = require("./controller/api/volunteers");
 const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use("/api/startups", startups);
 app.use("/api/mentors", mentors);
+app.use("/api/volunteers",volunteers);
 //app.all("*", (req, res, next) => {
 //  console.log(req.csrfToken());
 //  res.cookie("XSRF-TOKEN", req.csrfToken());

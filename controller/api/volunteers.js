@@ -8,15 +8,15 @@ const Volunteer = require("../../models/Volunteers");
 // @desc    get the Volunteer details by handle
 // @access  Public
 
-router.get("/Volunteers", (req, res) => {
+router.get("/volunteers", (req, res) => {
   Volunteer.find({})
   .then((Volunteers) => {
     if (Volunteers) {
       console.log(Volunteers);
-      return res.status(200).json({success: true, data: Volunteers});
+      res.status(200).json({success: true, data: Volunteers});
     }
     else{
-      return res.status(500).json({message: "No records found!"});
+      res.status(500).json({message: "No records found!"});
     }
   })
   .catch((err) => {
@@ -124,7 +124,7 @@ router.post("/", (req, res) => {
 // @desc    register Volunteer
 // @access  Public
 router.get("/search", async (req, res) => {
-  const { handle, domain} = req.query;
+  const { handle, domain } = req.query;
   const response = [];
   if (handle) {
     await Volunteer.find({ handle: { $regex: new RegExp(handle) } })
