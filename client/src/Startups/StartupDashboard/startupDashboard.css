@@ -1,0 +1,26 @@
+/** @format */
+
+.wellcomeContainer {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.searchFeild {
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.5px solid #ccc;
+}
+
+.row__Cards {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.row__Cards::-webkit-scrollbar {
+  display: none;
+}

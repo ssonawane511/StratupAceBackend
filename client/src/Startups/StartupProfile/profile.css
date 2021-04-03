@@ -1,0 +1,35 @@
+/** @format */
+
+.profile-block {
+  border: 1px solid #ccc;
+  padding: 40px 40px;
+
+  background-color: white;
+  min-height: 200px;
+}
+
+.primay-block {
+  background-color: #0276fd;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.profile-icon {
+  margin: 20px 0px;
+  cursor: pointer;
+  text-align: center;
+}
+.profile-icon svg {
+  height: 40px;
+  width: 40px;
+  color: #0276fd;
+}
+.profile-icon span {
+  color: rgb(149, 149, 149);
+  display: block;
+  font-size: 12px;
+  text-align: center;
+}
+.contact-section {
+  padding: 20px;
+}

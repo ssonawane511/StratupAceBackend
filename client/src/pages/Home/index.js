@@ -42,6 +42,9 @@ const Home = () => {
         <div className='col-6'>
           <div
             className=' card'
+            onClick={(e) => {
+              history.push("/mentor/login");
+            }}
             style={{
               backgroundImage: `url("${mentorImg}")`,
             }}>

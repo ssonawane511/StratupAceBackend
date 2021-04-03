@@ -1,11 +1,12 @@
 /** @format */
 
 import React, { useState } from "react";
-import loginSVG from "../../assets/images/login.svg";
-import "./startuplogin.css";
+import mentorlogin from "../../assets/images/mentorlogin.svg";
+import "./mentorLogin.css";
 import firebase from "firebase";
+
 import { useHistory } from "react-router-dom";
-const StartupLogin = () => {
+const MentorLogin = () => {
   const history = useHistory();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -24,10 +25,10 @@ const StartupLogin = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        console.log(userCredential);
         setErrorCode(null);
         setSuccesLogin(true);
-        history.push("/startup/check");
+
+        history.push("/mentor/check");
       })
       .catch((error) => {
         setErrorCode(error.code);
@@ -40,8 +41,8 @@ const StartupLogin = () => {
         <div className='col-md-4'>
           <div className='loginWindow'>
             <div className='text-center'>
-              <img className='img_100' src={loginSVG} alt='loginImg' />
-              <h4>Startup Login</h4>
+              <img className='img_100' src={mentorlogin} alt='loginImg' />
+              <h4>Mentor Login</h4>
             </div>
             {errorCode ? (
               <p className='mt-20' style={{ color: "red" }}>
@@ -107,7 +108,7 @@ const StartupLogin = () => {
               <div className='mt-20 text-center'>
                 <p style={{ color: "#ccc" }}>
                   Don't have an account?{" "}
-                  <a href='/startup/signup' style={{ color: "blue" }}>
+                  <a href='/mentor/signup' style={{ color: "blue" }}>
                     Sign up
                   </a>
                 </p>
@@ -120,4 +121,4 @@ const StartupLogin = () => {
   );
 };
 
-export default StartupLogin;
+export default MentorLogin;

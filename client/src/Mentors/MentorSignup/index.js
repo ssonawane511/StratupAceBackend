@@ -1,14 +1,12 @@
 /** @format */
 
 import React, { useState } from "react";
-import signupSVG from "../../assets/images/signup.svg";
+import mentorSignupSvg from "../../assets/images/mentorSignup.svg";
 import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
-import { useAuth } from "../../utils/auth";
-const StartupSignup = () => {
+const MentorSignup = () => {
   const history = useHistory();
-  const { signOut } = useAuth();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [errorCode, setErrorCode] = useState(null);
@@ -18,7 +16,6 @@ const StartupSignup = () => {
     "auth/user-not-found": " User does not found",
     "auth/weak-password": " Password must be 6 letters",
     "auth/invalid-email": "Invalid Email",
-    "auth/email-already-in-use": "email already used",
   };
 
   const loginWithGmailAndPassword = (e) => {
@@ -30,20 +27,16 @@ const StartupSignup = () => {
         setSuccesSignup(true);
         Axios({
           method: "post",
-          url: "http://localhost:7000/api/startups/claim_startup",
+          url: "http://localhost:7000/api/mentors/claim_mentor",
           data: {
             uid: userCredential.user.uid,
           },
         }).then((res) => {
-          if (res.data.success) {
-            signOut();
-            history.push("/startup/login");
-          }
+          console.log(res);
         });
       })
       .catch((error) => {
         setErrorCode(error.code);
-        console.log(error.code);
       });
   };
 
@@ -54,8 +47,8 @@ const StartupSignup = () => {
           <div className='col-md-4'>
             <div className='loginWindow'>
               <div className='text-center'>
-                <img className='img_100' src={signupSVG} alt='loginImg' />
-                <h4>Startup signup</h4>
+                <img className='img_100' src={mentorSignupSvg} alt='loginImg' />
+                <h4>Mentor signup</h4>
               </div>
               {errorCode ? (
                 <p className='mt-20' style={{ color: "red" }}>
@@ -121,7 +114,7 @@ const StartupSignup = () => {
                 <div className='mt-20 text-center'>
                   <p style={{ color: "#ccc" }}>
                     Already have an account?{" "}
-                    <a href='/startup/login' style={{ color: "blue" }}>
+                    <a href='/mentor/login' style={{ color: "blue" }}>
                       Log in
                     </a>
                   </p>
@@ -135,4 +128,4 @@ const StartupSignup = () => {
   );
 };
 
-export default StartupSignup;
+export default MentorSignup;

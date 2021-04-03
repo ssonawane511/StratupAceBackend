@@ -1,10 +1,12 @@
 /** @format */
 
 import React from "react";
-import "./navbar.css";
+import "./logednavbar.css";
 import logo from "../../assets/images/logo.png";
+import { useAuth } from "../../utils/auth";
 
-const Navbar = () => {
+const LogedNavbar = () => {
+  const { signOut, user } = useAuth();
   return (
     <div className='container'>
       <div class='header'>
@@ -41,8 +43,8 @@ const Navbar = () => {
           <div class='navbar-collapse collapse' id='navbarTogglerDemo02'>
             <ul class='navbar-nav m-auto mt-2 mt-lg-0'>
               <li class='nav-item active'>
-                <a class='nav-link' href='#home'>
-                  Home{" "}
+                <a class='nav-link' href='#'>
+                  {user && user.email}
                 </a>
               </li>
               {/* <li class='nav-item'>
@@ -73,9 +75,11 @@ const Navbar = () => {
               </li> */}
             </ul>
             <form class='form-inline my-2 my-lg-0'>
-              <button class='btn signup-btn' type='submit'>
-                Sign up
-              </button>
+              {user && (
+                <button class='btn logout-btn' type='submit' onClick={signOut}>
+                  logout
+                </button>
+              )}
             </form>
           </div>
         </nav>
@@ -84,4 +88,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default LogedNavbar;

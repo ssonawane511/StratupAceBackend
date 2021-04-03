@@ -9,23 +9,53 @@ const authContext = createContext();
 function useProvideAuth() {
   const history = useHistory();
   const [user, setuser] = useState(null);
-  const [lodding, setlodding] = useState(true);
+  const [loading, setloading] = useState(true);
+  const [claim, setClaim] = useState(null);
+  console.log(claim);
+
+  const signOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        history.push("/");
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   // let count = 0;
   useEffect(() => {
+    setloading(true);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setuser(user.providerData[0]);
-        setlodding(false);
+        user.getIdTokenResult().then((idTokenResult) => {
+          console.log(idTokenResult.claims);
+          if (idTokenResult.claims.startup) {
+            setClaim("startup");
+          } else if (idTokenResult.claims.mentor) {
+            setClaim("mentor");
+          }
+          setuser(user.providerData[0]);
+          setloading(false);
+        });
       } else {
-        history.push("/");
+        console.log("no  user");
+        setClaim(null);
+        setuser(null);
+
+        // history.push("/");
       }
     });
   }, []);
 
   return {
+    signOut,
     user,
-    lodding,
+    claim,
+    loading,
     isLogedIn: user ? true : false,
   };
 }

@@ -1,0 +1,16 @@
+/** @format */
+
+.nav-link {
+  color: black;
+  transition: 0.2s;
+}
+.nav-link:hover {
+  color: #f53838;
+}
+
+.signup-btn {
+  border: 2px solid #f53855 !important;
+  background: none;
+  padding: 5px 20px;
+  border-radius: 30px;
+}

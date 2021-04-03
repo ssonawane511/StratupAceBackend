@@ -3,6 +3,9 @@
 .mt-20 {
   margin-top: 20px;
 }
+.mt-50 {
+  margin-top: 50px;
+}
 .mt-100 {
   margin-top: 100px;
 }
@@ -10,10 +13,36 @@
   margin-bottom: 100px;
 }
 
+.p-10 {
+  padding: 10px;
+}
 .fullWindow {
   height: 100vh;
 }
 
 .img_100 {
   width: 100%;
+}
+
+.chip {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.icon-text svg {
+  height: 20px;
+}
+
+.icon-text p {
+  margin: 0px;
+  margin-left: 20px;
 }

@@ -3,13 +3,12 @@ const express = require("express");
 const router = express.Router();
 const data = require("../../data/startups.json");
 const Startup = require("../../models/Startups");
-
+const admin = require("firebase-admin");
 // @route   GET api/startups/statupace
 // @desc    get the startup details by handle
 // @access  Public
 router.get("/handle/:handle", (req, res) => {
   const { handle } = req.params;
-
   Startup.findOne({ handle })
     .then((startups) => {
       if (startups) {
@@ -20,6 +19,21 @@ router.get("/handle/:handle", (req, res) => {
         res
           .status(200)
           .json({ success: true, message: "Handle Does not exists" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
+router.get("/get_details/:handle", (req, res) => {
+  const { handle } = req.params;
+  Startup.findOne({ handle })
+    .then((startup) => {
+      if (startup) {
+        res.status(200).json({ success: true, data: startup });
+      } else {
+        res.status(200).json({ success: false, message: "No data" });
       }
     })
     .catch((err) => {
@@ -132,6 +146,17 @@ router.post("/", (req, res) => {
         .json({ success: true, message: "Registered SuccessFull" });
     }
   });
+});
+
+router.post("/claim_startup", (req, res) => {
+  admin
+    .auth()
+    .setCustomUserClaims(req.body.uid, { startup: true })
+    .then(() => {
+      res.json({
+        success: true,
+      });
+    });
 });
 
 module.exports = router;

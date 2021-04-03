@@ -1,0 +1,18 @@
+/** @format */
+
+.mentorCard {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.verifiedTag {
+  position: absolute;
+  right: 0px;
+}
+
+.verifiedMark {
+  color: blue;
+}

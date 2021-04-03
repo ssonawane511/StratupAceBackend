@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 //const data = require("../../data/Mentors.json");
 const Mentor = require("../../models/Mentors");
-
+const admin = require("firebase-admin");
 // @route   GET api/Mentors/statupace
 // @desc    get the Mentor details by handle
 // @access  Public
@@ -29,16 +29,18 @@ router.get("/test", (req, res) => {
   });
 });
 
-// @route   POST api/Mentors/statupace
+// @route   POST api/Mentors/handle/statupace
 // @desc    check handle exits or not
 // @access  Public
 router.post("/handle/:handle", (req, res) => {
   const { handle } = req.params;
   Mentor.findOne({ handle }).then((Mentor) => {
     if (Mentor) {
-      res.status(400).json({ message: "handel already exists" });
+      res
+        .status(200)
+        .json({ success: false, message: "handel already exists" });
     } else {
-      res.status(200).json({ message: "avaliable" });
+      res.status(200).json({ success: true, message: "avaliable" });
     }
   });
 });
@@ -56,11 +58,12 @@ router.post("/", (req, res) => {
     phone,
     dob,
     residential_Address,
-    company_Address,
     profession,
-    qualification,
+    previousExperience,
     description,
-    MentorDetails: { domain, industryType, numberOfColleaugues },
+    websiteLink,
+    MentorDetails: { domain, industryType, patent },
+    expertise,
   } = req.body;
 
   // this to check existing Mentor
@@ -89,17 +92,21 @@ router.post("/", (req, res) => {
           phone,
           dob,
           residential_Address,
-          company_Address,
           profession,
-          qualification,
+          previousExperience,
           description,
-          MentorDetails: { domain, industryType, numberOfColleaugues },
+          websiteLink,
+          MentorDetails: { domain, industryType, patent },
+          expertise,
         });
         newMentor.save();
         // console.log("new Mentor", newMentor);
-        return res.status(200).json({ message: "registerd successfull" });
+        return res
+          .status(200)
+          .json({ success: true, message: "registerd successfull" });
       } catch (err) {
-        if (err) res.status(500).json({ message: "server donw" });
+        if (err)
+          res.status(200).json({ success: false, message: "server donw" });
       }
     }
   });
@@ -168,6 +175,128 @@ router.get("/search", async (req, res) => {
       message: "no results",
     });
   }
+});
+
+// @route   POST api/Mentors/mentors
+// @desc    register Mentor
+// @access  Public
+
+router.get("/mentors", (req, res) => {
+  Mentor.find(
+    {},
+    {
+      MentorDetails: 1,
+      role: 1,
+      isVerified: 1,
+      handle: 1,
+      fname: 1,
+      mname: 1,
+      lname: 1,
+      mail: 1,
+      phone: 1,
+      dob: 1,
+      residential_Address: 1,
+      company_Address: 1,
+      profession: 1,
+      qualification: 1,
+      description: 1,
+    }
+  ).then((Mentors) => {
+    if (Mentors) {
+      return res.json({ success: true, data: Mentors });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
+router.post("/find_mentor", (req, res) => {
+  const { query } = req.body;
+  if (query === "") {
+    return res.json({ success: false });
+  }
+  Mentor.find(
+    {
+      $or: [
+        { fname: { $regex: query, $options: "$i" } },
+        { lname: { $regex: query, $options: "$i" } },
+        { handle: { $regex: query, $options: "$i" } },
+        { "MentorDetails.domain": { $regex: query, $options: "$i" } },
+        { "MentorDetails.industryType": { $regex: query, $options: "$i" } },
+      ],
+    },
+    {
+      MentorDetails: 1,
+      role: 1,
+      isVerified: 1,
+      handle: 1,
+      fname: 1,
+      mname: 1,
+      lname: 1,
+      mail: 1,
+      phone: 1,
+      dob: 1,
+      residential_Address: 1,
+      company_Address: 1,
+      profession: 1,
+      qualification: 1,
+      description: 1,
+    }
+  ).then((Mentors) => {
+    if (Mentors) {
+      return res.json({ success: true, data: Mentors });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
+// @route   GET api/mentors/email
+// @desc    get the startup details by handle
+// @access  Public
+router.post("/email", (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  Mentor.findOne({ mail: email })
+    .then((Mentor) => {
+      if (Mentor) {
+        res.status(200).json({ success: true, data: Mentor });
+      } else {
+        res
+          .status(200)
+          .json({ success: false, message: "Mentor Does not Exist" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
+router.post("/is_profile_exist", (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  Mentor.findOne({ mail: email })
+    .then((mentor) => {
+      if (mentor) {
+        res.status(200).json({ success: true });
+      } else {
+        res.status(200).json({ success: false });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
+router.post("/claim_mentor", (req, res) => {
+  admin
+    .auth()
+    .setCustomUserClaims(req.body.uid, { mentor: true })
+    .then(() => {
+      res.json({
+        success: true,
+      });
+    });
 });
 
 module.exports = router;

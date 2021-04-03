@@ -9,7 +9,7 @@ import "notyf/notyf.min.css"; // for React, Vue and Svelte
 import { useAuth } from "../../utils/auth";
 import Loader from "../../components/Loader";
 const StartupOnboard = () => {
-  const { user, lodding } = useAuth();
+  const { user, loading } = useAuth();
 
   const notyf = new Notyf();
   const history = useHistory();
@@ -33,12 +33,13 @@ const StartupOnboard = () => {
   const [domain, setdomain] = useState("");
   const [handle, sethandle] = useState("");
   const [handleError, sethandleError] = useState(null);
+  const [id, setid] = useState(null);
   useEffect(() => {
-    if (!lodding) {
+    if (!loading) {
       const email = user.email;
       setemail(email);
       console.log(user.email);
-
+      setid(user.uid);
       Axios({
         method: "post",
         url: "http://localhost:7000/api/startups/email",
@@ -67,7 +68,7 @@ const StartupOnboard = () => {
         }
       });
     }
-  }, [lodding]);
+  }, [loading]);
 
   const entries = {
     handle: {
@@ -242,13 +243,13 @@ const StartupOnboard = () => {
   };
 
   const checkhandle = (handle) => {
+    sethandle(handle);
     Axios({
       url: `http://localhost:7000/api/startups/handle/${handle}`,
       method: "get",
     })
       .then((res) => {
         if (res.data.success) {
-          sethandle(handle);
           sethandleError(false);
         } else {
           sethandleError(true);
@@ -257,7 +258,7 @@ const StartupOnboard = () => {
       .catch((err) => {});
   };
 
-  if (lodding) {
+  if (loading) {
     return (
       <div className='row fullWindow justify-content-center align-items-center'>
         <Loader />
