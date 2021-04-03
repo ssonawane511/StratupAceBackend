@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { useHistory } from "react-router-dom";
-import Axios from "axios";
+// import Axios from "axios";
 import firebase from "firebase";
 const authContext = createContext();
 
@@ -11,7 +11,6 @@ function useProvideAuth() {
   const [user, setuser] = useState(null);
   const [loading, setloading] = useState(true);
   const [claim, setClaim] = useState(null);
-  console.log(claim);
 
   const signOut = () => {
     firebase
@@ -32,7 +31,6 @@ function useProvideAuth() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         user.getIdTokenResult().then((idTokenResult) => {
-          console.log(idTokenResult.claims);
           if (idTokenResult.claims.startup) {
             setClaim("startup");
           } else if (idTokenResult.claims.mentor) {
@@ -42,7 +40,6 @@ function useProvideAuth() {
           setloading(false);
         });
       } else {
-        console.log("no  user");
         setClaim(null);
         setuser(null);
 

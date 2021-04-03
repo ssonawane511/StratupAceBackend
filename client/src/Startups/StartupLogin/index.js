@@ -24,7 +24,6 @@ const StartupLogin = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        console.log(userCredential);
         setErrorCode(null);
         setSuccesLogin(true);
         history.push("/startup/check");

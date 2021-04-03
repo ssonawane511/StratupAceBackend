@@ -38,16 +38,15 @@ const StartupOnboard = () => {
     if (!loading) {
       const email = user.email;
       setemail(email);
-      console.log(user.email);
+
       setid(user.uid);
       Axios({
         method: "post",
-        url: "http://localhost:7000/api/startups/email",
+        url: "/api/startups/email",
         data: {
           email: email,
         },
       }).then((res) => {
-        console.log(res.data.success);
         if (res.data.success) {
           setf_name(res.data.data.fname);
           setm_name(res.data.data.mname);
@@ -152,7 +151,6 @@ const StartupOnboard = () => {
   };
 
   const formSubmit = (e) => {
-    console.log("hello");
     e.preventDefault();
     if (
       handle === null ||
@@ -209,7 +207,7 @@ const StartupOnboard = () => {
     } else {
       Axios({
         method: "post",
-        url: "http://localhost:7000/api/startups/",
+        url: "/api/startups/",
         data: {
           handle: handle,
           fname: f_name,
@@ -239,13 +237,12 @@ const StartupOnboard = () => {
         }
       });
     }
-    console.log("hello");
   };
 
   const checkhandle = (handle) => {
     sethandle(handle);
     Axios({
-      url: `http://localhost:7000/api/startups/handle/${handle}`,
+      url: `/api/startups/handle/${handle}`,
       method: "get",
     })
       .then((res) => {

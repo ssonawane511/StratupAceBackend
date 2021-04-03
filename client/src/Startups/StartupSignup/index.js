@@ -30,7 +30,7 @@ const StartupSignup = () => {
         setSuccesSignup(true);
         Axios({
           method: "post",
-          url: "http://localhost:7000/api/startups/claim_startup",
+          url: "/api/startups/claim_startup",
           data: {
             uid: userCredential.user.uid,
           },
@@ -43,7 +43,6 @@ const StartupSignup = () => {
       })
       .catch((error) => {
         setErrorCode(error.code);
-        console.log(error.code);
       });
   };
 

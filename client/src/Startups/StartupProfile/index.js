@@ -10,13 +10,12 @@ const StartupProfile = () => {
   let { handle } = useParams();
   const [details, setdetails] = useState(null);
   const [loading, setloading] = useState(true);
-  console.log(handle);
 
   useEffect(() => {
     if (handle) {
       Axios({
         method: "get",
-        url: `http://localhost:7000/api/startups/get_details/${handle}`,
+        url: `/api/startups/get_details/${handle}`,
       }).then((res) => {
         if (res.data.success) {
           setdetails(res.data.data);

@@ -25,9 +25,8 @@ const StartupDashboard = () => {
   useEffect(() => {
     Axios({
       method: "get",
-      url: "http://localhost:7000/api/Mentors/mentors",
+      url: "/api/Mentors/mentors",
     }).then((res) => {
-      console.log(res.data);
       if (res.data.success) {
         setMentors(res.data.data);
       }
@@ -38,7 +37,7 @@ const StartupDashboard = () => {
     if (query !== " ") {
       Axios({
         method: "post",
-        url: "http://localhost:7000/api/Mentors/find_mentor",
+        url: "/api/Mentors/find_mentor",
         data: { query },
       }).then((res) => {
         if (res.data.success) {

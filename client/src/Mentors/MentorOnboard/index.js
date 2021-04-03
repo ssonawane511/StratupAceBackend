@@ -48,16 +48,15 @@ const MentorOnboard = () => {
     if (!loading) {
       const email = user.email;
       setemail(email);
-      console.log(user.email);
+
       setid(user.uid);
       Axios({
         method: "post",
-        url: "http://localhost:7000/api/mentors/email",
+        url: "/api/mentors/email",
         data: {
           email: email,
         },
       }).then((res) => {
-        console.log(res.data.success);
         if (res.data.success) {
           //   setf_name(res.data.data.fname);
           //   setm_name(res.data.data.mname);
@@ -82,7 +81,7 @@ const MentorOnboard = () => {
 
   const handleFileChange = (e) => {
     setfileSizeLimit(false);
-    console.log(e.target.files[0]);
+
     const file = e.target.files[0];
     const maxAllowedSize = 2 * 1024 * 1024;
     if (file.size > maxAllowedSize) {
@@ -97,7 +96,7 @@ const MentorOnboard = () => {
   const checkhandle = (handle) => {
     sethandle(handle);
     Axios({
-      url: `http://localhost:7000/api/mentors/handle/${handle}`,
+      url: `/api/mentors/handle/${handle}`,
       method: "post",
     })
       .then((res) => {
@@ -246,27 +245,12 @@ const MentorOnboard = () => {
       expertise === " " ||
       expertise === ""
     ) {
-      console.log(handle);
-      console.log(f_name);
-      console.log(m_name);
-      console.log(l_name);
-      console.log(email);
-      console.log(phone);
-      console.log(date);
-      console.log(r_address);
-      console.log(details);
-      console.log(Profession);
-      console.log(previousExperience);
-      console.log(websiteLink);
-      console.log(patent);
-      console.log(industryType);
-      console.log(domain);
       seterror("please fill all the deatils");
       return;
     } else {
       Axios({
         method: "post",
-        url: "http://localhost:7000/api/mentors/",
+        url: "/api/mentors/",
         data: {
           handle,
           fname: f_name,

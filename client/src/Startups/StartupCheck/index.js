@@ -11,11 +11,11 @@ const StartupCheck = () => {
   const { user, loading, claim } = useAuth();
   useEffect(() => {
     if (!loading)
-      if (claim == "startup") {
+      if (claim === "startup") {
         if (user) {
           Axios({
             method: "post",
-            url: "http://localhost:7000/api/startups/is_profile_exist",
+            url: "/api/startups/is_profile_exist",
             data: {
               email: user.email,
             },

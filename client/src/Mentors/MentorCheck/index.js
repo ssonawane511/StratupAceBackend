@@ -11,11 +11,11 @@ const MentorCheck = () => {
   const { user, loading, claim } = useAuth();
   useEffect(() => {
     if (!loading)
-      if (claim == "mentor") {
+      if (claim === "mentor") {
         if (user) {
           Axios({
             method: "post",
-            url: "http://localhost:7000/api/mentors/is_profile_exist",
+            url: "/api/mentors/is_profile_exist",
             data: {
               email: user.email,
             },

@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import mentorSignupSvg from "../../assets/images/mentorSignup.svg";
 import firebase from "firebase";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import Axios from "axios";
 const MentorSignup = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [errorCode, setErrorCode] = useState(null);
@@ -27,13 +27,11 @@ const MentorSignup = () => {
         setSuccesSignup(true);
         Axios({
           method: "post",
-          url: "http://localhost:7000/api/mentors/claim_mentor",
+          url: "/api/mentors/claim_mentor",
           data: {
             uid: userCredential.user.uid,
           },
-        }).then((res) => {
-          console.log(res);
-        });
+        }).then((res) => {});
       })
       .catch((error) => {
         setErrorCode(error.code);

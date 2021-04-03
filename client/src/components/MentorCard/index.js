@@ -4,7 +4,6 @@ import React from "react";
 import "./mentorcard.css";
 
 const MentorCard = ({ data }) => {
-  console.log(data);
   return (
     <div className='mentorCard'>
       <div className='float-right'>
@@ -92,7 +91,10 @@ const MentorCard = ({ data }) => {
       </div>
       <div>
         <div className='float-right'>
-          <a href={`/mentor/profile/${data.handle}`} target='_blank'>
+          <a
+            href={`/mentor/profile/${data.handle}`}
+            target='_blank'
+            rel='noreferrer'>
             Know More
           </a>
         </div>

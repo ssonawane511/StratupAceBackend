@@ -21,7 +21,7 @@ const MentorProfile = () => {
     if (handle) {
       Axios({
         method: "get",
-        url: `http://localhost:7000/api/mentors/get_details/${handle}`,
+        url: `/api/mentors/get_details/${handle}`,
       }).then((res) => {
         if (res.data.success) {
           setdetails(res.data.data);
@@ -39,9 +39,7 @@ const MentorProfile = () => {
 
   const handleConnectionSubmit = (e) => {
     e.preventDefault();
-    console.log(requestNote);
-    console.log(handle);
-    console.log(user.uid);
+
     setrequestSendSuccess(true);
   };
 
