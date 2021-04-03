@@ -251,6 +251,24 @@ router.post("/find_mentor", (req, res) => {
   });
 });
 
+// @route   GET api/mentors/get_details/:handle
+// @desc    get the startup details by handle
+// @access  Public
+router.get("/get_details/:handle", (req, res) => {
+  const { handle } = req.params;
+  Mentor.findOne({ handle })
+    .then((Mentor) => {
+      if (Mentor) {
+        res.status(200).json({ success: true, data: Mentor });
+      } else {
+        res.status(200).json({ success: false, message: "No data" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
 // @route   GET api/mentors/email
 // @desc    get the startup details by handle
 // @access  Public

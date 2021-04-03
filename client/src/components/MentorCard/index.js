@@ -92,7 +92,9 @@ const MentorCard = ({ data }) => {
       </div>
       <div>
         <div className='float-right'>
-          <a href=''>Know More</a>
+          <a href={`/mentor/profile/${data.handle}`} target='_blank'>
+            Know More
+          </a>
         </div>
       </div>
     </div>
