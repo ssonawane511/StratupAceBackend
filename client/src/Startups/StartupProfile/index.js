@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import "./profile.css";
+import "../../assets/style/profile.css";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import Loader from "../../components/Loader";
