@@ -209,6 +209,7 @@ const StartupOnboard = () => {
         method: "post",
         url: "/api/startups/",
         data: {
+          uid: user.uid,
           handle: handle,
           fname: f_name,
           mname: m_name,

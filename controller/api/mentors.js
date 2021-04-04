@@ -4,6 +4,7 @@ const router = express.Router();
 //const data = require("../../data/Mentors.json");
 const Mentor = require("../../models/Mentors");
 const admin = require("firebase-admin");
+const MentorRequest = require("../../models/MentorRequest");
 // @route   GET api/Mentors/statupace
 // @desc    get the Mentor details by handle
 // @access  Public
@@ -50,6 +51,7 @@ router.post("/handle/:handle", (req, res) => {
 // @access  Public
 router.post("/", (req, res) => {
   const {
+    uid,
     handle,
     fname,
     mname,
@@ -84,6 +86,7 @@ router.post("/", (req, res) => {
       try {
         //console.log("mentore creating");
         const newMentor = new Mentor({
+          uid,
           handle,
           fname,
           mname,
@@ -290,6 +293,9 @@ router.post("/email", (req, res) => {
     });
 });
 
+// @route   GET api/mentors/is_profile_exist
+// @desc    check mentor exist or not
+// @access  Public
 router.post("/is_profile_exist", (req, res) => {
   const { email } = req.body;
   console.log(email);
@@ -315,6 +321,22 @@ router.post("/claim_mentor", (req, res) => {
         success: true,
       });
     });
+});
+
+// @route   GET api/mentors/get_requests/:uid
+// @desc    get all the request
+// @access  Public
+router.get("/get_requests/:uid", (req, res) => {
+  MentorRequest.find(
+    { "mentor.uid": req.params.uid },
+    { accepted: 1, date: 1, id: 1, note: 1, seen: 1, startup: 1 }
+  ).then((request) => {
+    if (request) {
+      return res.json({ success: true, data: request });
+    } else {
+      return res.json({ success: false });
+    }
+  });
 });
 
 module.exports = router;

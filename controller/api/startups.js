@@ -3,7 +3,12 @@ const express = require("express");
 const router = express.Router();
 const data = require("../../data/startups.json");
 const Startup = require("../../models/Startups");
+const Mentor = require("../../models/Mentors");
 const admin = require("firebase-admin");
+const MentorRequest = require("../../models/MentorRequest");
+const { nanoid } = require("nanoid");
+const { request } = require("express");
+
 // @route   GET api/startups/statupace
 // @desc    get the startup details by handle
 // @access  Public
@@ -89,6 +94,7 @@ router.get("/test", (req, res) => {
 // @access  Public
 router.post("/", (req, res) => {
   const {
+    uid,
     handle,
     fname,
     mname,
@@ -124,6 +130,7 @@ router.post("/", (req, res) => {
     } else {
       // if not exists then save
       const newStartup = new Startup({
+        uid,
         handle,
         fname,
         mname,
@@ -159,4 +166,68 @@ router.post("/claim_startup", (req, res) => {
     });
 });
 
+// @route   POST api/startups/connection/:mentorHandle
+// @desc    send conncetion req to mentor
+// @access  Public
+router.post("/connection/:mentorHandle", async (req, res) => {
+  console.log(req.body, req.params.mentorHandle);
+  let MentorDetails = {};
+  let startupDetails = {};
+  await Mentor.findOne({ handle: req.params.mentorHandle }).then((mentor) => {
+    MentorDetails = mentor;
+  });
+  await Startup.findOne({ uid: req.body.userId }).then((startup) => {
+    startupDetails = startup;
+  });
+  try {
+    const newRequest = new MentorRequest({
+      mentor: {
+        uid: MentorDetails.uid,
+        profilePic: MentorDetails.profilePic,
+        name: `${MentorDetails.fname} ${MentorDetails.lname}`,
+        expertise: MentorDetails.expertise,
+        handle: MentorDetails.handle,
+      },
+      startup: {
+        uid: startupDetails.uid,
+        name: `${startupDetails.fname} ${startupDetails.lname}`,
+        profilePic: startupDetails.profilePic,
+        description: startupDetails.description,
+        handle: startupDetails.handle,
+      },
+      note: req.body.note,
+      id: nanoid(10),
+    });
+    newRequest.save().then(
+      function () {
+        res.json({ success: true });
+      },
+      function (err) {
+        res.json({ success: false });
+      }
+    );
+  } catch (err) {
+    res.json({ success: false });
+  }
+
+  // MentorRequest;
+});
+
+// @route   POST api/startups/checkRequest/:mentorHandle
+// @desc    send conncetion req to mentor
+// @access  Public
+router.post("/checkRequest/:mentorHandle", async (req, res) => {
+  console.log(req.body, req.params.mentorHandle);
+  MentorRequest.findOne({
+    "mentor.handle": req.params.mentorHandle,
+    "startup.uid": req.body.userId,
+  }).then((request) => {
+    if (request) {
+      return res.json({ success: true, note: request.note });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+  // MentorRequest;
+});
 module.exports = router;

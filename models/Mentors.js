@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const MentorSchema = new Schema(
   {
+    uid: { type: String, required: true },
     role: { type: String, default: 400 },
     handle: { type: String, required: true },
     fname: { type: String, required: true },

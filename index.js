@@ -33,38 +33,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use("/api/startups", startups);
 app.use("/api/mentors", mentors);
-//app.all("*", (req, res, next) => {
-//  console.log(req.csrfToken());
-//  res.cookie("XSRF-TOKEN", req.csrfToken());
-//  next();
-//});
-
-app.post("/sessionLogin", (req, res) => {
-  const idToken = req.body.idToken.toString();
-  const expiresIn = 60 * 60 * 24 * 5 * 1000;
-
-  admin
-    .auth()
-    .createSessionCookie(idToken, { expiresIn })
-    .then(
-      (sessionCookie) => {
-        const options = { maxAge: expiresIn, httpOnly: true };
-        res.cookie("session", sessionCookie, options);
-        res.end(JSON.stringify({ status: "success" }));
-      },
-      (error) => {
-        res.status(401).send("UNAUTHORIZED REQUEST!");
-      }
-    );
-});
-
-app.get("/home", (req, res) => {
-  console.log("request recieved at  /");
-  res.json({
-    status: 200,
-    message: "hello wellcome to startup ace backend",
-  });
-});
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder

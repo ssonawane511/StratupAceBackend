@@ -252,6 +252,7 @@ const MentorOnboard = () => {
         method: "post",
         url: "/api/mentors/",
         data: {
+          uid: user.uid,
           handle,
           fname: f_name,
           mname: m_name,
@@ -487,7 +488,7 @@ const MentorOnboard = () => {
                 type='file'
                 name='file'
                 id='resume'
-                class='item'
+                className='item'
                 accept='.pdf'
                 onChange={handleFileChange}
                 required=''></input>
@@ -596,82 +597,82 @@ const MentorOnboard = () => {
           </div>
           <div className='row mt-4'>
             <div className='col-md-12'>
-              <div class='product_checkboxes'>
-                <div class='form-check form-check-inline'>
+              <div className='product_checkboxes'>
+                <div className='form-check form-check-inline'>
                   <input
-                    class='form-check-input'
+                    className='form-check-input'
                     name='exp[]'
                     type='checkbox'
                     id='inlineCheckbox1'
                     value='Marketing'
                     onChange={(e) => handleExpertise(e.target.value)}
                   />
-                  <label class='form-check-label' for='inlineCheckbox1'>
+                  <label className='form-check-label' for='inlineCheckbox1'>
                     Marketing
                   </label>
                 </div>
-                <div class='form-check form-check-inline'>
+                <div className='form-check form-check-inline'>
                   <input
-                    class='form-check-input'
+                    className='form-check-input'
                     name='exp[]'
                     type='checkbox'
                     id='inlineCheckbox2'
                     onChange={(e) => handleExpertise(e.target.value)}
                     value='Personnel'
                   />
-                  <label class='form-check-label' for='inlineCheckbox2'>
+                  <label className='form-check-label' for='inlineCheckbox2'>
                     Personnel
                   </label>
                 </div>
-                <div class='form-check form-check-inline'>
+                <div className='form-check form-check-inline'>
                   <input
-                    class='form-check-input'
+                    className='form-check-input'
                     name='exp[]'
                     type='checkbox'
                     id='inlineCheckbox3'
                     onChange={(e) => handleExpertise(e.target.value)}
                     value='General Management'
                   />
-                  <label class='form-check-label' for='inlineCheckbox3'>
+                  <label className='form-check-label' for='inlineCheckbox3'>
                     General Management
                   </label>
                 </div>
-                <div class='form-check form-check-inline'>
+                <div className='form-check form-check-inline'>
                   <input
-                    class='form-check-input'
+                    className='form-check-input'
                     name='exp[]'
                     type='checkbox'
                     id='inlineCheckbox4'
                     onChange={(e) => handleExpertise(e.target.value)}
                     value='Technical'
                   />
-                  <label class='form-check-label' for='inlineCheckbox4'>
+                  <label className='form-check-label' for='inlineCheckbox4'>
                     Technical
                   </label>
                 </div>
-                <div class='form-check form-check-inline'>
+                <div className='form-check form-check-inline'>
                   <input
-                    class='form-check-input'
+                    className='form-check-input'
                     name='exp[]'
                     type='checkbox'
                     id='inlineCheckbox5'
                     onChange={(e) => handleExpertise(e.target.value)}
                     value='Administration'
                   />
-                  <label class='form-check-label' for='inlineCheckbox5'>
+                  <label className='form-check-label' for='inlineCheckbox5'>
                     Administration
                   </label>
                 </div>
-                <div class='form-check form-check-inline'>
+                <div className='form-check form-check-inline'>
                   <input
-                    class='form-check-input'
+                    className='form-check-input'
                     name='exp[]'
                     type='checkbox'
                     id='inlineCheckbox6'
                     onChange={(e) => handleExpertise(e.target.value)}
                     value='Other'
                   />
-                  <label class='form-check-label' for='inlineCheckbox6'>
+                  <label className='form-check-label' for='inlineCheckbox6'>
                     Other
                   </label>
                 </div>
