@@ -1,11 +1,28 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../utils/auth";
 import mentorwellcome from "../../assets/images/mentorwellcome.svg";
+import MentorRequest from "../MentorRequest";
 import Loader from "../../components/Loader";
+import Axios from "axios";
+
 const MentorDashboard = () => {
   const { user, loading } = useAuth();
+  const [request, setrequest] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      Axios({
+        method: "get",
+        url: `/api/mentors/get_requests/${user.uid}`,
+      }).then((res) => {
+        if (res.data.success) {
+          setrequest(res.data.data);
+        }
+      });
+    }
+  }, [user]);
 
   if (loading) {
     return (
@@ -38,6 +55,17 @@ const MentorDashboard = () => {
               <br />
               et pulvinar lacus rhoncus. Nulla nec.
             </p>
+          </div>
+        </div>
+
+        <div className='row mt-20'>
+          <div className='col'>
+            <p>All Requets</p>
+            <div className='row'>
+              {request.length > 0
+                ? request.map((req) => <MentorRequest request={req} />)
+                : ""}
+            </div>
           </div>
         </div>
       </div>

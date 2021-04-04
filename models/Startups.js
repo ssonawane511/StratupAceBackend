@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const StartupSchema = new Schema(
   {
+    uid: { type: String, required: true },
     role: { type: String, default: 100 },
     handle: { type: String, required: true },
     fname: { type: String, required: true },

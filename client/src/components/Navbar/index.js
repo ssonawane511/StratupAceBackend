@@ -7,15 +7,15 @@ import logo from "../../assets/images/logo.png";
 const Navbar = () => {
   return (
     <div className='container'>
-      <div class='header'>
-        <nav class='navbar navbar-expand-lg'>
-          <a class='navbar-brand' href='/'>
-            <div class='logo'>
+      <div className='header'>
+        <nav className='navbar navbar-expand-lg'>
+          <a className='navbar-brand' href='/'>
+            <div className='logo'>
               <img src={logo} alt='' />
             </div>
           </a>
           <button
-            class='navbar-toggler collapsed'
+            className='navbar-toggler collapsed'
             type='button'
             data-toggle='collapse'
             data-target='#navbarTogglerDemo02'
@@ -26,7 +26,7 @@ const Navbar = () => {
               width='1em'
               height='1em'
               viewBox='0 0 16 16'
-              class='bi bi-chevron-double-down'
+              className='bi bi-chevron-double-down'
               fill='currentColor'
               xmlns='http://www.w3.org/2000/svg'>
               <path
@@ -38,42 +38,42 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <div class='navbar-collapse collapse' id='navbarTogglerDemo02'>
-            <ul class='navbar-nav m-auto mt-2 mt-lg-0'>
-              <li class='nav-item active'>
-                <a class='nav-link' href='#home'>
+          <div className='navbar-collapse collapse' id='navbarTogglerDemo02'>
+            <ul className='navbar-nav m-auto mt-2 mt-lg-0'>
+              <li className='nav-item active'>
+                <a className='nav-link' href='#home'>
                   Home{" "}
                 </a>
               </li>
-              {/* <li class='nav-item'>
-                <a class='nav-link' href='#about'>
+              {/* <li className='nav-item'>
+                <a className='nav-link' href='#about'>
                   About
                 </a>
               </li>
-              <li class='nav-item'>
-                <a class='nav-link' href='#features'>
+              <li className='nav-item'>
+                <a className='nav-link' href='#features'>
                   {" "}
                   Fetures
                 </a>
               </li>
-              <li class='nav-item'>
-                <a class='nav-link' href='#pricing'>
+              <li className='nav-item'>
+                <a className='nav-link' href='#pricing'>
                   Pricing
                 </a>
               </li>
-              <li class='nav-item'>
-                <a class='nav-link' href='#testimonials'>
+              <li className='nav-item'>
+                <a className='nav-link' href='#testimonials'>
                   Testimonials
                 </a>
               </li>
-              <li class='nav-item'>
-                <a class='nav-link' href='#help'>
+              <li className='nav-item'>
+                <a className='nav-link' href='#help'>
                   Help
                 </a>
               </li> */}
             </ul>
-            <form class='form-inline my-2 my-lg-0'>
-              <button class='btn signup-btn' type='submit'>
+            <form className='form-inline my-2 my-lg-0'>
+              <button className='btn signup-btn' type='submit'>
                 Sign up
               </button>
             </form>
