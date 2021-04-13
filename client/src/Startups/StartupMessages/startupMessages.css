@@ -1,0 +1,9 @@
+/** @format */
+
+.messages_container {
+  height: 450px !important;
+}
+
+.messages_container::-webkit-scrollbar {
+  display: none;
+}

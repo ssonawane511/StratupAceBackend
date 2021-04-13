@@ -32,6 +32,7 @@ const MentorCheck = () => {
         history.push("/mentor/error");
       }
   }, [loading]);
+
   return (
     <div className='container'>
       <div className='row fullWindow justify-content-center align-items-center'>

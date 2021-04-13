@@ -6,10 +6,18 @@ import mentorwellcome from "../../assets/images/mentorwellcome.svg";
 import MentorRequest from "../MentorRequest";
 import Loader from "../../components/Loader";
 import Axios from "axios";
-
+import { useHistory } from "react-router-dom";
 const MentorDashboard = () => {
   const { user, loading } = useAuth();
   const [request, setrequest] = useState([]);
+  const history = useHistory();
+  useEffect(() => {
+    if (!loading)
+      if (user) {
+      } else {
+        history.push("/");
+      }
+  }, [loading]);
 
   useEffect(() => {
     if (user) {
@@ -34,7 +42,7 @@ const MentorDashboard = () => {
     );
   } else {
     return (
-      <div className='container  mt-50'>
+      <div className='container  mt-50 mb-100'>
         <div className='row wellcomeContainer align-items-center'>
           <div className='col-6'>
             <img

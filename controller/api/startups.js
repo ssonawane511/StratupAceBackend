@@ -8,7 +8,8 @@ const admin = require("firebase-admin");
 const MentorRequest = require("../../models/MentorRequest");
 const { nanoid } = require("nanoid");
 const { request } = require("express");
-
+const Connections = require("../../models/Connections");
+const Messages = require("../../models/Messages");
 // @route   GET api/startups/statupace
 // @desc    get the startup details by handle
 // @access  Public
@@ -230,4 +231,96 @@ router.post("/checkRequest/:mentorHandle", async (req, res) => {
   });
   // MentorRequest;
 });
+
+// @route   get api/startups/get_converstaions/:uid
+// @desc    get all conversations
+// @access  Public
+router.get("/get_converstaions/:uid", (req, res) => {
+  Connections.find(
+    { pair: req.params.uid },
+    {
+      mentor: 1,
+      isLastMessgae: 1,
+      lastMessage: 1,
+      id: 1,
+    },
+    { limit: 10 }
+  ).then((conections) => {
+    if (conections) {
+      return res.json({ success: true, data: conections });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
+// @route   get api/startups/get_messages/:id - conversation id
+// @desc    get all messages
+// @access  Public
+router.get("/get_messages/:id", async (req, res) => {
+  let conversationData = {};
+  let messagesData = {};
+  await Connections.findOne(
+    { id: req.params.id },
+    {
+      startup: 1,
+      id: 1,
+      mentor: 1,
+      isLastMessgae: 1,
+      lastMessage: 1,
+    }
+  )
+    .sort({ updated: -1 })
+    .then((conversation) => {
+      if (conversation) {
+        conversationData = conversation;
+      }
+    });
+
+  await Messages.find({ conversationId: conversationData.id }, {})
+    .sort({ date: -1 })
+    .then((messages) => {
+      if (messages) {
+        messagesData = messages;
+      }
+    });
+
+  if (conversationData && messagesData) {
+    return res.json({
+      success: true,
+      data: conversationData,
+      messages: messagesData,
+    });
+  } else {
+    return res.json({ success: false });
+  }
+});
+
+// @route   get api/startups/send_messages/:id
+// @desc    send messages
+// @access  Public
+router.post("/send_messages/:id", (req, res) => {
+  const message = req.body.message;
+  Connections.findOneAndUpdate(
+    { id: req.params.id },
+    {
+      isLastMessgae: true,
+      lastMessage: {
+        message: message,
+      },
+    }
+  ).then((conversation) => {
+    if (conversation) {
+      const newMessage = new Messages();
+      newMessage.conversationId = conversation.id;
+      newMessage.from = conversation.startup.uid;
+      newMessage.messages = message;
+      newMessage.save();
+      return res.json({ success: true });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
 module.exports = router;

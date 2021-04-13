@@ -17,6 +17,8 @@ function useProvideAuth() {
       .auth()
       .signOut()
       .then(() => {
+        setloading(false);
+        setloading(true);
         history.push("/");
         // Sign-out successful.
       })

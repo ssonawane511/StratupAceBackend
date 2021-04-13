@@ -1,0 +1,86 @@
+/** @format */
+
+.left-chat-container {
+  overflow: scroll;
+  max-height: 550px;
+}
+
+.left-chat-container::-webkit-scrollbar {
+  display: none;
+}
+
+.chat_box {
+  position: absolute;
+  order: 2;
+  border-top: 1px solid #eee;
+  padding: 16px;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+}
+.chat_box #message_form .form-group #message_input {
+  resize: none;
+  overflow-y: auto;
+  min-height: 40px;
+  max-height: 260px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 8px 31px 8px 11px;
+}
+
+textarea.form-control {
+  -webkit-appearance: none;
+  resize: none;
+  height: 120px;
+  line-height: 1.57142857;
+}
+
+.chat_box #message_form .form-group .attachment {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: #8a8a8a;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  padding-right: 12px;
+  padding-bottom: 15px;
+}
+
+.chat_box #message_form .form-group {
+  margin: 0;
+}
+
+.chat_box #message_form .submit_button.form-group:not(.invitation_container) {
+  margin-left: 8px;
+}
+.chat_box #message_form {
+  display: flex;
+  align-items: flex-end;
+  align-items: center;
+}
+
+.chat_box #message_form .textarea {
+  width: 100%;
+  flex: 9;
+  position: relative;
+}
+
+.chat_box #message_form .form-group #message_input {
+  resize: none;
+  overflow-y: auto;
+  min-height: 40px;
+  max-height: 260px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 8px 31px 8px 11px;
+}
+
+.chat_box .textarea .form-control {
+  border-radius: 0px;
+}
+
+.chat_box .textarea .form-control::-webkit-scrollbar {
+  display: none;
+}
