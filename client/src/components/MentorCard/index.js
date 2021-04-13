@@ -27,7 +27,7 @@ const MentorCard = ({ data }) => {
             alt='profile'
           />
         </div>
-        <div className='col-8'>
+        <div className='col-8 text-ellipsis'>
           <strong>
             <p>{data.fname + " " + data.lname} </p>
           </strong>

@@ -5,6 +5,8 @@ const router = express.Router();
 const Mentor = require("../../models/Mentors");
 const admin = require("firebase-admin");
 const MentorRequest = require("../../models/MentorRequest");
+const Connections = require("../../models/Connections");
+const Messages = require("../../models/Messages");
 // @route   GET api/Mentors/statupace
 // @desc    get the Mentor details by handle
 // @access  Public
@@ -333,6 +335,122 @@ router.get("/get_requests/:uid", (req, res) => {
   ).then((request) => {
     if (request) {
       return res.json({ success: true, data: request });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
+// @route   POST api/mentors/accept_req/:id
+// @desc    accept the request
+// @access  Public
+router.post("/accept_req/:id", (req, res) => {
+  MentorRequest.findOneAndUpdate(
+    { id: req.params.id },
+    { accepted: true },
+    {
+      new: true,
+    }
+  ).then((request) => {
+    if (request) {
+      const newConnection = new Connections();
+      newConnection.mentor = request.mentor;
+      newConnection.startup = request.startup;
+      newConnection.pair = [request.mentor.uid, request.startup.uid];
+
+      newConnection.save();
+
+      return res.json({ success: true });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
+// @route   get api/mentors/get_converstaions/:uid
+// @desc    get all conversations
+// @access  Public
+router.get("/get_converstaions/:uid", (req, res) => {
+  Connections.find(
+    { pair: req.params.uid },
+    {
+      startup: 1,
+      isLastMessgae: 1,
+      lastMessage: 1,
+      id: 1,
+    },
+    { limit: 10 }
+  ).then((conections) => {
+    if (conections) {
+      return res.json({ success: true, data: conections });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
+// @route   get api/mentors/get_messages/:id - conversation id
+// @desc    get all messages
+// @access  Public
+router.get("/get_messages/:id", async (req, res) => {
+  let conversationData = {};
+  let messagesData = {};
+  await Connections.findOne(
+    { id: req.params.id },
+    {
+      startup: 1,
+      id: 1,
+      mentor: 1,
+      isLastMessgae: 1,
+      lastMessage: 1,
+    }
+  )
+    .sort({ date: -1 })
+    .then((conversation) => {
+      if (conversation) {
+        conversationData = conversation;
+      }
+    });
+  await Messages.find({ conversationId: conversationData.id }, {})
+    .sort({ date: -1 })
+    .then((messages) => {
+      if (messages) {
+        messagesData = messages;
+      }
+    });
+
+  if (conversationData && messagesData) {
+    return res.json({
+      success: true,
+      data: conversationData,
+      messages: messagesData,
+    });
+  } else {
+    return res.json({ success: false });
+  }
+});
+
+// @route   get api/mentors/send_messages/:id
+// @desc    send messages
+// @access  Public
+router.post("/send_messages/:id", (req, res) => {
+  const message = req.body.message;
+  Connections.findOneAndUpdate(
+    { id: req.params.id },
+    {
+      isLastMessgae: true,
+      lastMessage: {
+        message: message,
+      },
+    }
+  ).then((conversation) => {
+    if (conversation) {
+      const newMessage = new Messages();
+      newMessage.conversationId = conversation.id;
+      newMessage.from = conversation.mentor.uid;
+      newMessage.messages = message;
+      newMessage.save();
+      return res.json({ success: true });
     } else {
       return res.json({ success: false });
     }

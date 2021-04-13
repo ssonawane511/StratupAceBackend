@@ -20,7 +20,7 @@ const StartupDashboard = () => {
     } else {
       history.push("/");
     }
-  }, [loading]);
+  }, [loading, user]);
 
   useEffect(() => {
     Axios({
@@ -61,7 +61,7 @@ const StartupDashboard = () => {
     );
   } else {
     return (
-      <div className='container  mt-50'>
+      <div className='container  mt-50 mb-100'>
         <div className='row wellcomeContainer align-items-center'>
           <div className='col-6'>
             <img

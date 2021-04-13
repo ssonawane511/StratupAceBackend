@@ -1,11 +1,14 @@
 /** @format */
-
+.ml-10 {
+  margin-left: 10px;
+}
 .mt-20 {
   margin-top: 20px;
 }
 .mt-50 {
   margin-top: 50px;
 }
+
 .mt-100 {
   margin-top: 100px;
 }
@@ -13,6 +16,9 @@
   margin-bottom: 100px;
 }
 
+.mb-200 {
+  margin-bottom: 200px;
+}
 .p-10 {
   padding: 10px;
 }
@@ -24,6 +30,12 @@
   width: 100%;
 }
 
+.highligh {
+  text-decoration: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
 .chip {
   padding: 5px 10px;
   border: 1px solid #ccc;
@@ -46,4 +58,67 @@
 .icon-text p {
   margin: 0px;
   margin-left: 20px;
+}
+
+.border-l {
+  border-left: 1px solid #ccc;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.p-25 {
+  padding: 15px 10px;
+}
+
+.shadow-b {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.message {
+  padding: 10px 15px;
+}
+
+.message span {
+  font-size: 10px;
+}
+
+.mine {
+  margin-left: auto;
+  width: fit-content;
+  font-weight: 400;
+  color: #333;
+  border: none;
+  word-break: unset;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 12%);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  text-rendering: optimizeLegibility;
+  font-size: 14px;
+  padding: 12px 12px 6px 16px;
+  border-bottom-right-radius: 0;
+  background: #eafcff;
+}
+.mine span {
+  display: none;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.background-white {
+  background-color: white;
+}
+
+.background-light {
+  background: #f8f8f8;
 }

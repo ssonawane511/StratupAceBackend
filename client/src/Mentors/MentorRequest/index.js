@@ -14,13 +14,15 @@ const MentorRequest = ({ request }) => {
             className='rounded-circle'
           />
         </div>
-        <div className='col-7'>
+        <div className='col-7  '>
           <p>
             <strong>{request.startup.name} </strong>
             <br />
             <span style={{ color: "#ccc" }}>{request.startup.handle}</span>
           </p>
-          <span>{request.startup.description}</span>
+          <div className='text-ellipsis'>
+            <span className=''> {request.startup.description}</span>
+          </div>
         </div>
       </div>
       <hr />
@@ -32,6 +34,7 @@ const MentorRequest = ({ request }) => {
         </div>
       </div>
       <div className='row'>
+        <div className='col'></div>
         <div className='col'>
           <a
             href={`/startup/profile/${request.startup.handle}`}

@@ -15,6 +15,8 @@ import StartupCheck from "./Startups/StartupCheck";
 import LogedNavbar from "./components/LogedNavbar";
 import StartupError from "./Startups/StartupError";
 import StartupProfile from "./Startups/StartupProfile";
+import StartupNavbar from "./Startups/StartupNavbar";
+import StartupMessages from "./Startups/StartupMessages";
 // mentors
 import MentorLogin from "./Mentors/MentorLogin";
 import MentorSignup from "./Mentors/MentorSignup";
@@ -23,6 +25,9 @@ import MentorOnboard from "./Mentors/MentorOnboard";
 import MentorRegistrationSuccess from "./Mentors/MentorRegistrationSuccess";
 import MentorDashboard from "./Mentors/MentorDashboard";
 import MentorProfile from "./Mentors/MentorProfile";
+import MentorNavbar from "./Mentors/MentorNavbar";
+import MentorMessages from "./Mentors/MentorMessages";
+import MentorRequestPage from "./Mentors/MentorRequestPage";
 
 import "./assets/style/common.css";
 import { ProvideAuth } from "./utils/auth";
@@ -88,10 +93,23 @@ function App() {
                 <>
                   {" "}
                   <LogedNavbar />
+                  <StartupNavbar />
                   <StartupDashboard />{" "}
                 </>
               )}
             />
+
+            <Route
+              path='/startup/chat/:id'
+              exact
+              component={() => (
+                <>
+                  {" "}
+                  <LogedNavbar /> <StartupNavbar /> <StartupMessages />{" "}
+                </>
+              )}
+            />
+
             <Route
               path='/startup/profile/:handle'
               exact
@@ -103,6 +121,7 @@ function App() {
                 </>
               )}
             />
+
             <Route
               path='/startup/check'
               exact
@@ -150,7 +169,28 @@ function App() {
               component={() => (
                 <>
                   {" "}
-                  <LogedNavbar /> <MentorDashboard />{" "}
+                  <LogedNavbar /> <MentorNavbar /> <MentorDashboard />{" "}
+                </>
+              )}
+            />
+            <Route
+              path='/mentor/chat/:id'
+              exact
+              component={() => (
+                <>
+                  {" "}
+                  <LogedNavbar /> <MentorNavbar /> <MentorMessages />{" "}
+                </>
+              )}
+            />
+
+            <Route
+              path='/mentor/request'
+              exact
+              component={() => (
+                <>
+                  {" "}
+                  <LogedNavbar /> <MentorNavbar /> <MentorRequestPage />{" "}
                 </>
               )}
             />
