@@ -7,6 +7,34 @@ const admin = require("firebase-admin");
 const MentorRequest = require("../../models/MentorRequest");
 const Connections = require("../../models/Connections");
 const Messages = require("../../models/Messages");
+
+// @route   GET api/Mentors/me/uid
+// @desc    get the startup details by uid
+// @access  Public
+router.get("/me/:uid", (req, res) => {
+  const { uid } = req.params;
+  Mentor.findOne(
+    { uid: uid },
+    {
+      fname: 1,
+      handle: 1,
+      lname: 1,
+      mail: 1,
+      mname: 1,
+    }
+  )
+    .then((Mentor) => {
+      if (Mentor) {
+        res.status(200).json({ success: true, data: Mentor });
+      } else {
+        res.status(200).json({ success: false, message: "no profile" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
 // @route   GET api/Mentors/statupace
 // @desc    get the Mentor details by handle
 // @access  Public

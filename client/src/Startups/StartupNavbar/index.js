@@ -2,7 +2,9 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 const StartupNavbar = () => {
+  const { myDetails } = useAuth();
   return (
     <div className='container-fluid'>
       <hr />
@@ -23,6 +25,23 @@ const StartupNavbar = () => {
               <Link className='nav-link' to={`/startup/request`}>
                 Requets <sup>new</sup>
               </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={`/startup/services`}>
+                Services
+              </Link>
+            </li>
+            <li className='nav-item'>
+              {myDetails ? (
+                <a
+                  className='nav-link'
+                  href={`/startup/profile/${myDetails.handle}`}
+                  target='_blank'>
+                  Public-Profile
+                </a>
+              ) : (
+                ""
+              )}
             </li>
             {/* <li className='nav-item'>
               <Link className='nav-link' to={`/mentor/profile`}>

@@ -2,7 +2,9 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 const MentorNavbar = () => {
+  const { myDetails } = useAuth();
   return (
     <div className='container-fluid background-white'>
       <hr />
@@ -23,6 +25,18 @@ const MentorNavbar = () => {
               <Link className='nav-link' to={`/mentor/request`}>
                 Requets <sup>new</sup>
               </Link>
+            </li>
+            <li className='nav-item'>
+              {myDetails ? (
+                <a
+                  className='nav-link'
+                  href={`/mentor/profile/${myDetails.handle}`}
+                  target='_blank'>
+                  Public-Profile
+                </a>
+              ) : (
+                ""
+              )}
             </li>
             {/* <li className='nav-item'>
               <Link className='nav-link' to={`/mentor/profile`}>

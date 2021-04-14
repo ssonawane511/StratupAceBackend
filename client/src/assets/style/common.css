@@ -22,6 +22,10 @@
 .p-10 {
   padding: 10px;
 }
+
+.p-30 {
+  padding: 30px;
+}
 .fullWindow {
   height: 100vh;
 }

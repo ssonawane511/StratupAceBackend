@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { useHistory } from "react-router-dom";
-// import Axios from "axios";
+import Axios from "axios";
 import firebase from "firebase";
 const authContext = createContext();
 
@@ -11,7 +11,7 @@ function useProvideAuth() {
   const [user, setuser] = useState(null);
   const [loading, setloading] = useState(true);
   const [claim, setClaim] = useState(null);
-
+  const [myDetails, setMyDetails] = useState(null);
   const signOut = () => {
     firebase
       .auth()
@@ -50,9 +50,37 @@ function useProvideAuth() {
     });
   }, []);
 
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    if (claim === "startup") {
+      Axios({
+        method: "get",
+        url: `/api/startups/me/${user.uid}`,
+      }).then((res) => {
+        if (res.data.success) {
+          console.log(res.data.data);
+          setMyDetails(res.data.data);
+        }
+      });
+    } else if (claim === "mentor") {
+      Axios({
+        method: "get",
+        url: `/api/mentors/me/${user.uid}`,
+      }).then((res) => {
+        if (res.data.success) {
+          setMyDetails(res.data.data);
+        }
+      });
+    } else {
+    }
+  }, [user]);
+
   return {
     signOut,
     user,
+    myDetails,
     claim,
     loading,
     isLogedIn: user ? true : false,

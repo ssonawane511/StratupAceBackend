@@ -17,7 +17,7 @@ import StartupProfile from "./Startups/StartupProfile";
 import StartupNavbar from "./Startups/StartupNavbar";
 import StartupMessages from "./Startups/StartupMessages";
 import StartupRequest from "./Startups/StartupRequest";
-
+import StartupServices from "./Startups/StartupServices";
 // mentors
 import MentorLogin from "./Mentors/MentorLogin";
 import MentorSignup from "./Mentors/MentorSignup";
@@ -122,6 +122,15 @@ function App() {
                   {" "}
                   <LogOut />
                   <LogedNavbar /> <StartupNavbar /> <StartupRequest />{" "}
+                </>
+              )}
+            />
+            <Route
+              path='/startup/services'
+              exact
+              component={() => (
+                <>
+                  <LogedNavbar /> <StartupNavbar /> <StartupServices />{" "}
                 </>
               )}
             />

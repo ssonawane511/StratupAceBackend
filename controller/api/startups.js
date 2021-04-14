@@ -10,6 +10,34 @@ const { nanoid } = require("nanoid");
 const { request } = require("express");
 const Connections = require("../../models/Connections");
 const Messages = require("../../models/Messages");
+
+// @route   GET api/startups/me/uid
+// @desc    get the startup details by uid
+// @access  Public
+router.get("/me/:uid", (req, res) => {
+  const { uid } = req.params;
+  Startup.findOne(
+    { uid: uid },
+    {
+      fname: 1,
+      handle: 1,
+      lname: 1,
+      mail: 1,
+      mname: 1,
+    }
+  )
+    .then((startups) => {
+      if (startups) {
+        res.status(200).json({ success: true, data: startups });
+      } else {
+        res.status(200).json({ success: false, message: "no profile" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: "technical Issue" });
+    });
+});
+
 // @route   GET api/startups/statupace
 // @desc    get the startup details by handle
 // @access  Public
