@@ -20,7 +20,12 @@ const StartupServices = () => {
             vitae nulla et urna pretium tempor. Aenean tempor, dui ac lobortis
             suscipit, dui nibh hendrerit urna.
           </p>
-          <button className='serviceRegister__btn'>Register</button>
+          <a
+            href='https://forms.gle/u35abBbK9n51htnw8'
+            target='_blank'
+            className='serviceRegister__btn'>
+            Register
+          </a>
         </div>
       </div>
       <div className='row align-items-center'>
@@ -31,7 +36,12 @@ const StartupServices = () => {
             vitae nulla et urna pretium tempor. Aenean tempor, dui ac lobortis
             suscipit, dui nibh hendrerit urna.
           </p>
-          <button className='serviceRegister__btn'>Register</button>
+          <a
+            href='https://forms.gle/u35abBbK9n51htnw8'
+            target='_blank'
+            className='serviceRegister__btn'>
+            Register
+          </a>
         </div>
         <div className='col-6'>
           <img className='img_100' src={graphicsDevelopment} alt='serviceImg' />
@@ -48,7 +58,12 @@ const StartupServices = () => {
             vitae nulla et urna pretium tempor. Aenean tempor, dui ac lobortis
             suscipit, dui nibh hendrerit urna.
           </p>
-          <button className='serviceRegister__btn'>Register</button>
+          <a
+            href='https://forms.gle/u35abBbK9n51htnw8'
+            target='_blank'
+            className='serviceRegister__btn'>
+            Register
+          </a>
         </div>
       </div>
     </div>
