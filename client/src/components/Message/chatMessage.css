@@ -1,0 +1,36 @@
+/** @format */
+
+.chatbot_message {
+  color: black;
+  border: 1px solid rgba(204, 204, 204, 0.287);
+  width: fit-content;
+  padding: 5px;
+  border-radius: 10px 10px 10px 0px;
+  margin: 7px 0px;
+}
+
+.botReply {
+  margin-left: auto;
+  border-radius: 10px 00px 10px 10px;
+  border: 1px solid rgb(0, 174, 255);
+  background: linear-gradient(
+    274deg,
+    rgba(22, 146, 241, 1) 46%,
+    rgba(0, 212, 255, 1) 100%
+  ) !important;
+  color: white;
+  text-align: right;
+}
+
+.data-profile {
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 20px;
+  color: black;
+  margin: 10px;
+  padding: 10px 10px;
+  border: 1px solid rgba(53, 53, 53, 0.089);
+}
+.data-profile p {
+  font-size: 15px;
+}

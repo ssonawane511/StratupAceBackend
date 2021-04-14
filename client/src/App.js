@@ -34,11 +34,16 @@ import "./assets/style/common.css";
 import { ProvideAuth } from "./utils/auth";
 
 // logout component
-
 import LogOut from "./components/LogOut";
+
+// chat bot
+
+import Chatbot from "./components/Chatbot";
+
 function App() {
   return (
     <div className='App'>
+      <Chatbot />
       <ProvideAuth>
         <Router>
           <Switch>

@@ -5,12 +5,17 @@ const dotenv = require("dotenv");
 const port = process.env.PORT || 7000;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const startups = require("./controller/api/startups");
-const mentors = require("./controller/api/mentors");
+
 const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const admin = require("firebase-admin");
+
+/// controllers
+const startups = require("./controller/api/startups");
+const mentors = require("./controller/api/mentors");
+const chatbot = require("./controller/api/chatbot");
+
 // csrf = cross site request fogery
 // to protect from scripting attacks from other sites
 const csrf = require("csurf");
@@ -33,6 +38,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use("/api/startups", startups);
 app.use("/api/mentors", mentors);
+app.use("/api/chatbot", chatbot);
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder
