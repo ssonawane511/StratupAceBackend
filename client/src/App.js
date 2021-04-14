@@ -110,7 +110,6 @@ function App() {
               component={() => (
                 <>
                   {" "}
-                  <LogOut />
                   <LogedNavbar /> <StartupNavbar /> <StartupMessages />{" "}
                 </>
               )}
@@ -195,7 +194,6 @@ function App() {
               component={() => (
                 <>
                   {" "}
-                  <LogOut />
                   <LogedNavbar /> <MentorNavbar /> <MentorMessages />{" "}
                 </>
               )}
