@@ -11,13 +11,13 @@ const MentorDashboard = () => {
   const { user, loading } = useAuth();
   const [request, setrequest] = useState([]);
   const history = useHistory();
+
   useEffect(() => {
-    if (!loading)
-      if (user) {
-      } else {
-        history.push("/");
-      }
-  }, [loading]);
+    if (user) {
+    } else {
+      history.push("/");
+    }
+  }, [loading, user]);
 
   useEffect(() => {
     if (user) {

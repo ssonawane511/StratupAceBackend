@@ -1,0 +1,43 @@
+/** @format */
+
+.startupMentorRequest {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 250px;
+  margin: 10px;
+  margin-left: 10px;
+}
+
+.startupMentorRequest .mentorDetails p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.startupMentorRequest .mentorDetails span {
+  font-size: 10px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.startupMentorRequest .mentorExpertises {
+  padding: 10px 0px;
+  overflow: scroll;
+}
+.startupMentorRequest .mentorExpertises::-webkit-scrollbar {
+  display: none;
+}
+
+.startupMentorRequest .note {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  word-break: break-all;
+}
+
+.startupMentorRequest .requestStatus span {
+  margin-left: 10px;
+}

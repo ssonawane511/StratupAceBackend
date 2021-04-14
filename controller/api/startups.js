@@ -232,6 +232,29 @@ router.post("/checkRequest/:mentorHandle", async (req, res) => {
   // MentorRequest;
 });
 
+// @route   get api/startups/get_requests/:uid
+// @desc    get all requests
+// @access  Public
+router.get("/get_requests/:uid", (req, res) => {
+  MentorRequest.find(
+    { "startup.uid": req.params.uid },
+    {
+      mentor: 1,
+      date: 1,
+      accepted: 1,
+      note: 1,
+      id: 1,
+    },
+    { limit: 10 }
+  ).then((requests) => {
+    if (requests) {
+      return res.json({ success: true, data: requests });
+    } else {
+      return res.json({ success: false });
+    }
+  });
+});
+
 // @route   get api/startups/get_converstaions/:uid
 // @desc    get all conversations
 // @access  Public

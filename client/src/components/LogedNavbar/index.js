@@ -4,9 +4,23 @@ import React from "react";
 import "./logednavbar.css";
 import logo from "../../assets/images/logo.png";
 import { useAuth } from "../../utils/auth";
-
+import firebase from "firebase";
+import { useHistory } from "react-router-dom";
 const LogedNavbar = () => {
-  const { signOut, user } = useAuth();
+  const history = useHistory();
+  const { user } = useAuth();
+  const signOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        history.push("/");
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <div className='container'>
       <div className='header'>

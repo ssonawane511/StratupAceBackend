@@ -3,7 +3,6 @@
 import "./App.css";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
 
 // startus
 import StartupLogin from "./Startups/StartupLogin";
@@ -17,6 +16,8 @@ import StartupError from "./Startups/StartupError";
 import StartupProfile from "./Startups/StartupProfile";
 import StartupNavbar from "./Startups/StartupNavbar";
 import StartupMessages from "./Startups/StartupMessages";
+import StartupRequest from "./Startups/StartupRequest";
+
 // mentors
 import MentorLogin from "./Mentors/MentorLogin";
 import MentorSignup from "./Mentors/MentorSignup";
@@ -32,6 +33,9 @@ import MentorRequestPage from "./Mentors/MentorRequestPage";
 import "./assets/style/common.css";
 import { ProvideAuth } from "./utils/auth";
 
+// logout component
+
+import LogOut from "./components/LogOut";
 function App() {
   return (
     <div className='App'>
@@ -43,7 +47,7 @@ function App() {
               exact
               component={() => (
                 <>
-                  <Navbar /> <Home />
+                  <Home />
                 </>
               )}
             />
@@ -71,6 +75,7 @@ function App() {
               component={() => (
                 <>
                   {" "}
+                  <LogOut />
                   <LogedNavbar />
                   <StartupOnboard />{" "}
                 </>
@@ -92,20 +97,32 @@ function App() {
               component={() => (
                 <>
                   {" "}
+                  <LogOut />
                   <LogedNavbar />
                   <StartupNavbar />
                   <StartupDashboard />{" "}
                 </>
               )}
             />
-
             <Route
               path='/startup/chat/:id'
               exact
               component={() => (
                 <>
                   {" "}
+                  <LogOut />
                   <LogedNavbar /> <StartupNavbar /> <StartupMessages />{" "}
+                </>
+              )}
+            />
+            <Route
+              path='/startup/request'
+              exact
+              component={() => (
+                <>
+                  {" "}
+                  <LogOut />
+                  <LogedNavbar /> <StartupNavbar /> <StartupRequest />{" "}
                 </>
               )}
             />
@@ -121,7 +138,6 @@ function App() {
                 </>
               )}
             />
-
             <Route
               path='/startup/check'
               exact
@@ -132,7 +148,6 @@ function App() {
               exact
               component={() => <StartupError />}
             />
-
             <Route
               path='/mentor/login'
               exact
@@ -169,6 +184,7 @@ function App() {
               component={() => (
                 <>
                   {" "}
+                  <LogOut />
                   <LogedNavbar /> <MentorNavbar /> <MentorDashboard />{" "}
                 </>
               )}
@@ -179,22 +195,22 @@ function App() {
               component={() => (
                 <>
                   {" "}
+                  <LogOut />
                   <LogedNavbar /> <MentorNavbar /> <MentorMessages />{" "}
                 </>
               )}
             />
-
             <Route
               path='/mentor/request'
               exact
               component={() => (
                 <>
                   {" "}
+                  <LogOut />
                   <LogedNavbar /> <MentorNavbar /> <MentorRequestPage />{" "}
                 </>
               )}
             />
-
             <Route
               path='/mentor/registrationSuccess'
               exact

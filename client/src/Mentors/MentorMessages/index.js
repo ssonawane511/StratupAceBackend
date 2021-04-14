@@ -71,7 +71,7 @@ const MentorMessgaes = () => {
     <div className='container mt-50 mb-100'>
       <div className='row'>
         <div className='col-4  no-margin p-25 shadow-b border-l'>
-          <h5>Messgaes from Mentors </h5>
+          <h5>Messgaes from Startups </h5>
         </div>
         {selectedConversation ? (
           <div className='col  no-margin p-25 shadow-b border-l'>
