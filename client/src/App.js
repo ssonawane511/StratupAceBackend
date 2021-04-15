@@ -29,7 +29,7 @@ import MentorProfile from "./Mentors/MentorProfile";
 import MentorNavbar from "./Mentors/MentorNavbar";
 import MentorMessages from "./Mentors/MentorMessages";
 import MentorRequestPage from "./Mentors/MentorRequestPage";
-
+import MentorError from "./Mentors/MentorError";
 import "./assets/style/common.css";
 import { ProvideAuth } from "./utils/auth";
 
@@ -37,8 +37,10 @@ import { ProvideAuth } from "./utils/auth";
 import LogOut from "./components/LogOut";
 
 // chat bot
-
 import Chatbot from "./components/Chatbot";
+
+// 404 page
+import Page404 from "./pages/Page404";
 
 function App() {
   return (
@@ -139,7 +141,6 @@ function App() {
                 </>
               )}
             />
-
             <Route
               path='/startup/profile/:handle'
               exact
@@ -239,6 +240,12 @@ function App() {
                 </>
               )}
             />
+            <Route
+              path='/mentor/error'
+              exact
+              component={() => <MentorError />}
+            />
+            <Route exact path='*' component={() => <Page404 />} />
           </Switch>
         </Router>
       </ProvideAuth>
