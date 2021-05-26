@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import mentorSignupSvg from "../../assets/images/mentorSignup.svg";
 import firebase from "firebase";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
+import { useAuth } from "../../utils/auth";
 const MentorSignup = () => {
-  // const history = useHistory();
+  const history = useHistory();
+  const { signOut } = useAuth();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [errorCode, setErrorCode] = useState(null);
@@ -31,7 +33,12 @@ const MentorSignup = () => {
           data: {
             uid: userCredential.user.uid,
           },
-        }).then((res) => {});
+        }).then((res) => {
+          if (res.data.success) {
+            signOut();
+            history.push("/mentor/login");
+          }
+        });
       })
       .catch((error) => {
         setErrorCode(error.code);

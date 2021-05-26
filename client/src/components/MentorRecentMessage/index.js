@@ -16,13 +16,13 @@ const MentorRecentMessage = ({ data }) => {
               </div>
             </div>
           </div>
-          <div class='profile_name '>
+          <div class='profile_name'>
             {data.mentor.expertise.map((expertise) => (
               <div className='chip'>{expertise}</div>
             ))}
           </div>
           <div class='message'>
-            <div class='message_inner'>
+            <div class='message_inner '>
               {data.isLastMessgae ? (
                 data.lastMessage.message
               ) : (

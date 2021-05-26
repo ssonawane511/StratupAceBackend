@@ -1,7 +1,6 @@
 /** @format */
 
 .chat_list_item .chat_element_container {
-  white-space: nowrap;
   text-overflow: ellipsis;
 
   overflow: hidden;
@@ -114,4 +113,12 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #eee;
+}
+
+.message_inner {
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }

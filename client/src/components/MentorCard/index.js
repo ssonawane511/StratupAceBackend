@@ -21,7 +21,7 @@ const MentorCard = ({ data }) => {
       <div className='row'>
         <div className='col-4'>
           <img
-            src='https://via.placeholder.com/150'
+            src={data.profilePhoto}
             className='rounded-circle img_100'
             width='100px'
             alt='profile'

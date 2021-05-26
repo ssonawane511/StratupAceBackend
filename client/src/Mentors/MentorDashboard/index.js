@@ -7,6 +7,7 @@ import MentorRequest from "../MentorRequest";
 import Loader from "../../components/Loader";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
+
 const MentorDashboard = () => {
   const { user, loading } = useAuth();
   const [request, setrequest] = useState([]);
@@ -58,10 +59,9 @@ const MentorDashboard = () => {
               <strong style={{ color: "blue" }}> {user.email}</strong>
             </h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit.
-              Sed tincidunt ipsum eu purus ultricies,
+              We the team of Startup Ace brings you the best possible services{" "}
               <br />
-              et pulvinar lacus rhoncus. Nulla nec.
+              make your profile reach right startups.
             </p>
           </div>
         </div>

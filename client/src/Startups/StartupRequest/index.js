@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useAuth } from "../../utils/auth";
 import Loader from "../../components/Loader";
 import StartupMentorCard from "../StartupMentorCard";
-
+import noNewRequest from "../../assets/images/noNewRequest.gif";
 const StartupRequest = () => {
   const { user, loading } = useAuth();
   const [requests, setRequests] = useState([]);
@@ -35,13 +35,24 @@ const StartupRequest = () => {
     return (
       <div className='container'>
         <div className='row'>
-          <div className='col d-flex flex-wrap'>
+          <div className='col d-flex flex-wrap '>
             {requests.length > 0
               ? requests.map((request) => (
                   <StartupMentorCard request={request} />
                 ))
               : ""}
           </div>
+        </div>
+        <div className='col  '>
+          {requests.length > 0 ? (
+            ""
+          ) : (
+            //  requests.map((request) => <StartupMentorCard request={request} />)
+            <div className='text-center'>
+              <img src={noNewRequest} className='' width='400px' />
+              <p>No Requests</p>
+            </div>
+          )}
         </div>
       </div>
     );

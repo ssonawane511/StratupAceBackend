@@ -129,3 +129,7 @@
 .background-light {
   background: #f8f8f8;
 }
+
+.rounded-circle {
+  object-fit: cover;
+}

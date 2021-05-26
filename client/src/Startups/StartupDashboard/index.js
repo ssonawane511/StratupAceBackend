@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MentorCard from "../../components/MentorCard";
 import Axios from "axios";
 import "./startupDashboard.css";
@@ -8,13 +8,14 @@ import Loader from "../../components/Loader";
 import wellcomeStartupSvg from "../../assets/images/wellcomeStartup.svg";
 import { useAuth } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
-
+import InfoBox from "../../components/InfoBox";
+import startupClickGif from "../../assets/images/startupClick.gif";
 const StartupDashboard = () => {
   const [mentors, setMentors] = useState(null);
   const [searchedMentors, setsearchedMentors] = useState(null);
   const { user, loading } = useAuth();
   const history = useHistory();
-
+  const sarchFeild = useRef();
   useEffect(() => {
     if (user) {
     } else {
@@ -33,6 +34,10 @@ const StartupDashboard = () => {
     });
   }, []);
 
+  const handleScroolToSearch = () => {
+    sarchFeild.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    //sarchFeild.current.focus();
+  };
   const handleSearch = (query) => {
     if (query !== " ") {
       Axios({
@@ -76,19 +81,25 @@ const StartupDashboard = () => {
               Wellcome <strong style={{ color: "blue" }}> {user.email}</strong>
             </h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit.
-              Sed tincidunt ipsum eu purus ultricies,
-              <br />
-              et pulvinar lacus rhoncus. Nulla nec.
+              We the team of Startup Ace brings you the best possible <br />{" "}
+              services to create a foundation for your startup. <br />
             </p>
+            <InfoBox
+              title={"new feature"}
+              note={
+                "Logo Designing service, We provide best and class logos to the startups "
+              }
+            />
           </div>
         </div>
         <div className='row mt-50'>
           <div className='col'>
             <input
+              ref={sarchFeild}
+              id='search'
               className='searchFeild'
               type='text'
-              placeholder='search for mentor'
+              placeholder='search for mentor by name   |    by industry    |     domain'
               onChange={(e) => handleSearch(e.target.value)}
             />
           </div>
@@ -101,8 +112,29 @@ const StartupDashboard = () => {
         <div className='mt-50'>
           <h5>Mentors Recommendation</h5>
         </div>
-        <div className='row'>
+        <div className='row d-flex justify-content-around'>
           {mentors && mentors.map((mentor) => <MentorCard data={mentor} />)}
+        </div>
+        <div className='row'>
+          <div className='col'>
+            <span
+              className=' float-right '
+              role='button'
+              onClick={handleScroolToSearch}>
+              Show more
+            </span>
+          </div>{" "}
+        </div>
+        <div className='row justify-content-center text-center mt-100'>
+          <div>
+            <img src={startupClickGif} width='300px' />
+
+            <p style={{ fontSize: "20px", color: "rgba(0,0,0,0.7)" }}>
+              {" "}
+              <br />
+              Mentor make dealing problems easy &#128522;
+            </p>
+          </div>
         </div>
       </div>
     );

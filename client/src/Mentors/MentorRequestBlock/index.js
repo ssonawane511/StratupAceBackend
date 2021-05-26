@@ -28,7 +28,7 @@ const MentorRequestBlock = ({ request }) => {
           <div className='row '>
             <div className='col-5 text-center'>
               <img
-                src='https://via.placeholder.com/150'
+                src={request.startup.profilePhoto}
                 alt=''
                 width='100px'
                 className='rounded-circle'

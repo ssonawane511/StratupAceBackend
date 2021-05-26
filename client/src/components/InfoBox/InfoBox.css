@@ -1,0 +1,9 @@
+/** @format */
+
+.InfoBox {
+  border: 1px solid #ffbb00;
+  background-color: rgb(255, 187, 0, 0.1);
+  padding: 10px 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+}

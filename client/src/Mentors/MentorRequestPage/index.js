@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import MentorRequestBlock from "../MentorRequestBlock";
 import { useAuth } from "../../utils/auth";
 import Axios from "axios";
+import noNewRequest from "../../assets/images/noNewRequest.gif";
+
 const MentorRequestPage = () => {
   const { user, loading } = useAuth();
   const [request, setrequest] = useState([]);
@@ -25,9 +27,14 @@ const MentorRequestPage = () => {
     <div className='container'>
       <div className='row'>
         <div className='col-12'>
-          {request.length > 0
-            ? request.map((req) => <MentorRequestBlock request={req} />)
-            : ""}
+          {request.length > 0 ? (
+            request.map((req) => <MentorRequestBlock request={req} />)
+          ) : (
+            <div className='text-center'>
+              <img src={noNewRequest} className='' width='400px' />
+              <p>No Requests</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

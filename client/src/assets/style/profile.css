@@ -33,3 +33,22 @@
 .contact-section {
   padding: 20px;
 }
+
+.changeAvatar {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+  background: #62a4d8;
+  color: white;
+  border-radius: 50%;
+  padding-inline: 5px;
+  box-shadow: 3px 3px 5px rgb(0 0 0 / 30%);
+  cursor: pointer;
+  transition: 0.4s;
+}
+.changeAvatar:hover {
+  background: white;
+  color: #62a4d8;
+}

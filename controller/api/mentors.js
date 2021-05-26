@@ -225,6 +225,7 @@ router.get("/mentors", (req, res) => {
       fname: 1,
       mname: 1,
       lname: 1,
+      profilePhoto: 1,
       mail: 1,
       phone: 1,
       dob: 1,
@@ -233,6 +234,9 @@ router.get("/mentors", (req, res) => {
       profession: 1,
       qualification: 1,
       description: 1,
+    },
+    {
+      limit: 6,
     }
   ).then((Mentors) => {
     if (Mentors) {
@@ -359,7 +363,15 @@ router.post("/claim_mentor", (req, res) => {
 router.get("/get_requests/:uid", (req, res) => {
   MentorRequest.find(
     { "mentor.uid": req.params.uid },
-    { accepted: 1, date: 1, id: 1, note: 1, seen: 1, startup: 1 }
+    {
+      accepted: 1,
+      date: 1,
+      id: 1,
+      note: 1,
+      seen: 1,
+      startup: 1,
+      profilePhoto: 1,
+    }
   ).then((request) => {
     if (request) {
       return res.json({ success: true, data: request });

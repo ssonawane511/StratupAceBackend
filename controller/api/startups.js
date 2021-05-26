@@ -212,7 +212,7 @@ router.post("/connection/:mentorHandle", async (req, res) => {
     const newRequest = new MentorRequest({
       mentor: {
         uid: MentorDetails.uid,
-        profilePic: MentorDetails.profilePic,
+        profilePhoto: MentorDetails.profilePhoto,
         name: `${MentorDetails.fname} ${MentorDetails.lname}`,
         expertise: MentorDetails.expertise,
         handle: MentorDetails.handle,
@@ -220,7 +220,7 @@ router.post("/connection/:mentorHandle", async (req, res) => {
       startup: {
         uid: startupDetails.uid,
         name: `${startupDetails.fname} ${startupDetails.lname}`,
-        profilePic: startupDetails.profilePic,
+        profilePhoto: startupDetails.profilePhoto,
         description: startupDetails.description,
         handle: startupDetails.handle,
       },

@@ -7,7 +7,7 @@ const MentorRequestSchema = new Schema(
   {
     mentor: {
       uid: { type: String, required: true },
-      profilePic: { type: String, required: false },
+      profilePhoto: { type: String, required: false },
       name: { type: String, required: true },
       handle: { type: String, required: true },
       expertise: [String],
@@ -15,7 +15,7 @@ const MentorRequestSchema = new Schema(
     startup: {
       uid: { type: String, required: true },
       name: { type: String, required: true },
-      profilePic: { type: String, required: false },
+      profilePhoto: { type: String, required: false },
       description: { type: String, required: true },
       handle: { type: String, required: true },
     },

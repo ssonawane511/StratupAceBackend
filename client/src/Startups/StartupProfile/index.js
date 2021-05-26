@@ -44,7 +44,7 @@ const StartupProfile = () => {
                 className='rounded-circle'
                 width='150px'
                 height='150px'
-                src='https://via.placeholder.com/150'
+                src={details.profilePhoto}
                 alt='profileimage'
               />
               <div className=''>
@@ -58,26 +58,30 @@ const StartupProfile = () => {
           <div className='d-flex'>
             <div className='contact-section'>
               <div className='profile-icon'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='currentColor'
-                  className='bi bi-phone'
-                  viewBox='0 0 16 16'>
-                  <path d='M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z' />
-                  <path d='M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z' />
-                </svg>
+                <a href={`tel: ${details.phone}`}>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='currentColor'
+                    className='bi bi-phone'
+                    viewBox='0 0 16 16'>
+                    <path d='M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z' />
+                    <path d='M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z' />
+                  </svg>
+                </a>
                 <span>Phone</span>
               </div>
               <div className='profile-icon'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='16'
-                  height='16'
-                  fill='currentColor'
-                  className='bi bi-envelope'
-                  viewBox='0 0 16 16'>
-                  <path d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z' />
-                </svg>
+                <a href={`mailto:${details.mail}`}>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='16'
+                    height='16'
+                    fill='currentColor'
+                    className='bi bi-envelope'
+                    viewBox='0 0 16 16'>
+                    <path d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z' />
+                  </svg>
+                </a>
                 <span>Email</span>
               </div>
               <div className='profile-icon connect'>

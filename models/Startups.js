@@ -7,6 +7,11 @@ const StartupSchema = new Schema(
   {
     uid: { type: String, required: true },
     role: { type: String, default: 100 },
+    profilePhoto: {
+      type: String,
+      default:
+        "https://firebasestorage.googleapis.com/v0/b/startupace-auth-system.appspot.com/o/avatar.png?alt=media",
+    },
     handle: { type: String, required: true },
     fname: { type: String, required: true },
     mname: { type: String, required: true },
