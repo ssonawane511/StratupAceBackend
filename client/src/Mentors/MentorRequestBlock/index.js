@@ -85,7 +85,8 @@ const MentorRequestBlock = ({ request }) => {
           )}
           <a
             href={`/startup/profile/${request.startup.handle}`}
-            target='_blank'>
+            target='_blank'
+            rel='noreferrer'>
             Visit profile
           </a>
         </div>

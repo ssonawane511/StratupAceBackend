@@ -35,6 +35,20 @@ const MentorLogin = () => {
       });
   };
 
+  const guestLogin = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword("mentor@mentor.com", "mentor")
+      .then((userCredential) => {
+        setErrorCode(null);
+        setSuccesLogin(true);
+        history.push("/mentor/check");
+      })
+      .catch((error) => {
+        setErrorCode(error.code);
+      });
+  };
+
   return (
     <div className='container'>
       <div className='row align-items-center justify-content-center fullWindow'>
@@ -111,6 +125,11 @@ const MentorLogin = () => {
                   <a href='/mentor/signup' style={{ color: "blue" }}>
                     Sign up
                   </a>
+                </p>
+              </div>
+              <div className='mt-20 text-center'>
+                <p style={{ color: "blue" }} role='button' onClick={guestLogin}>
+                  Guest Login{" "}
                 </p>
               </div>
             </form>

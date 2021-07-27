@@ -3,8 +3,10 @@
 import React from "react";
 import "./navbar.css";
 import logo from "../../assets/images/logo.png";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
+  const history = useHistory();
   return (
     <div className='container-fluid background-white'>
       <div className='container'>
@@ -46,36 +48,21 @@ const Navbar = () => {
                     Home{" "}
                   </a>
                 </li>
-                {/* <li className='nav-item'>
-                <a className='nav-link' href='#about'>
-                  About
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#features'>
-                  {" "}
-                  Fetures
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#pricing'>
-                  Pricing
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#testimonials'>
-                  Testimonials
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#help'>
-                  Help
-                </a>
-              </li> */}
               </ul>
               <form className='form-inline my-2 my-lg-0'>
-                <button className='btn signup-btn' type='submit'>
-                  Sign up
+                <button
+                  className='btn signup-btn'
+                  onClick={(e) => {
+                    history.push("/mentor/login");
+                  }}>
+                  Mentor Login
+                </button>
+                <button
+                  className='btn signup-btn'
+                  onClick={(e) => {
+                    history.push("/startup/login");
+                  }}>
+                  Startup Login
                 </button>
               </form>
             </div>

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import ScrollableFeed from "react-scrollable-feed";
 
 const MentorMessgaes = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   let { id = null } = useParams();
   const [conversations, setConversations] = useState([]);
   const [selectedConversation, setselectedConversation] = useState(null);

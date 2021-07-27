@@ -49,7 +49,12 @@ const StartupRequest = () => {
           ) : (
             //  requests.map((request) => <StartupMentorCard request={request} />)
             <div className='text-center'>
-              <img src={noNewRequest} className='' width='400px' />
+              <img
+                src={noNewRequest}
+                className=''
+                width='400px'
+                alt='profilepic'
+              />
               <p>No Requests</p>
             </div>
           )}

@@ -39,7 +39,8 @@ const MentorRequest = ({ request }) => {
           <a
             href={`/startup/profile/${request.startup.handle}`}
             className='float-right'
-            target='_blank'>
+            target='_blank'
+            rel='noreferrer'>
             Visit
           </a>
         </div>

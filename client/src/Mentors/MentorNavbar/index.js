@@ -31,24 +31,14 @@ const MentorNavbar = () => {
                 <a
                   className='nav-link'
                   href={`/mentor/profile/${myDetails.handle}`}
-                  target='_blank'>
+                  target='_blank'
+                  rel='noreferrer'>
                   Public-Profile
                 </a>
               ) : (
                 ""
               )}
             </li>
-            {/* <li className='nav-item'>
-              <Link className='nav-link' to={`/mentor/profile`}>
-                Profile
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to={`/mentor/settings`}>
-                {" "}
-                settings
-              </Link>
-            </li> */}
           </ul>
           <form className='form-inline my-2 my-lg-0'></form>
         </div>

@@ -31,6 +31,7 @@ const MentorCheck = () => {
         firebase.auth().signOut();
         history.push("/mentor/error");
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
   return (

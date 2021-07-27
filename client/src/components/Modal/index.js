@@ -5,7 +5,7 @@ import "./modal.css";
 const Modal = ({ text, img, show, link, linkTitle }) => {
   const [showModal, setshowModal] = useState(false);
   useEffect(() => {
-    console.log(show);
+    //console.log(show);
     setshowModal(show);
   }, [show]);
   const hideModal = () => {

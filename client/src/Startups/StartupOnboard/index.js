@@ -34,7 +34,7 @@ const StartupOnboard = () => {
   const [domain, setdomain] = useState("");
   const [handle, sethandle] = useState("");
   const [handleError, sethandleError] = useState(null);
-  const [id, setid] = useState(null);
+  const [, setid] = useState(null);
   useEffect(() => {
     if (!loading) {
       const email = user.email;
@@ -68,6 +68,7 @@ const StartupOnboard = () => {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
   const entries = {
@@ -390,7 +391,6 @@ const StartupOnboard = () => {
                     className='focus'
                     placeholder='email'
                     disabled='true'
-                    value={email}
                     required
                   />
                 </div>

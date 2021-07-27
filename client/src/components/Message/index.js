@@ -49,7 +49,10 @@ const Message = ({ message }) => {
                   <span>{item.mail}</span>
                 </p>
                 <p className='no-margin'>
-                  <a href={`/mentor/profile/${item.handle}`} target='_blank'>
+                  <a
+                    href={`/mentor/profile/${item.handle}`}
+                    target='_blank'
+                    rel='noreferrer'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='16'

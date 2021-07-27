@@ -5,11 +5,11 @@
   transition: 0.2s;
 }
 .nav-link:hover {
-  color: #f53838;
+  color: #0d32ae !important;
 }
 
 .signup-btn {
-  border: 2px solid #f53855 !important;
+  border: 2px solid #0d32ae !important;
   background: none;
   padding: 5px 20px;
   border-radius: 30px;

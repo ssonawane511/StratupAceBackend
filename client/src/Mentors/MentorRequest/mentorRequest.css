@@ -9,4 +9,5 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin: 5px;
 }

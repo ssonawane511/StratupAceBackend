@@ -21,6 +21,7 @@ const StartupDashboard = () => {
     } else {
       history.push("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, user]);
 
   useEffect(() => {
@@ -127,7 +128,7 @@ const StartupDashboard = () => {
         </div>
         <div className='row justify-content-center text-center mt-100'>
           <div>
-            <img src={startupClickGif} width='300px' />
+            <img src={startupClickGif} width='300px' alt='noimage' />
 
             <p style={{ fontSize: "20px", color: "rgba(0,0,0,0.7)" }}>
               {" "}

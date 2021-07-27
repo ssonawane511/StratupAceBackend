@@ -7,7 +7,7 @@ import Axios from "axios";
 import noNewRequest from "../../assets/images/noNewRequest.gif";
 
 const MentorRequestPage = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   const [request, setrequest] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,12 @@ const MentorRequestPage = () => {
             request.map((req) => <MentorRequestBlock request={req} />)
           ) : (
             <div className='text-center'>
-              <img src={noNewRequest} className='' width='400px' />
+              <img
+                src={noNewRequest}
+                className=''
+                width='400px'
+                alt='norequest'
+              />
               <p>No Requests</p>
             </div>
           )}

@@ -49,6 +49,7 @@ const MentorProfile = () => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const handleConnect = () => {
@@ -251,7 +252,7 @@ const MentorProfile = () => {
                     </div>
                     <div className='col-4 '>
                       <div className='profile-block primay-block'>
-                        <span>My startup</span>
+                        <span>My expert domain</span>
                         <div className='icon-text mt-20'>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'

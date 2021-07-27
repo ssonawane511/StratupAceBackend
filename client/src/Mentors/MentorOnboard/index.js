@@ -44,7 +44,7 @@ const MentorOnboard = () => {
   const [fileSizeLimit, setfileSizeLimit] = useState(false);
 
   // uid
-  const [id, setid] = useState(null);
+  const [, setid] = useState(null);
   useEffect(() => {
     if (!loading) {
       const email = user.email;
@@ -80,6 +80,7 @@ const MentorOnboard = () => {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
   const handleFileChange = (e) => {

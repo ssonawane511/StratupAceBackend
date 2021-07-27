@@ -31,6 +31,7 @@ const StartupCheck = () => {
         firebase.auth().signOut();
         history.push("/startup/error");
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
   return (
     <div className='container'>

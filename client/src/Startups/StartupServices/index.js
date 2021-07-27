@@ -22,7 +22,8 @@ const StartupServices = () => {
           <a
             href='https://forms.gle/u35abBbK9n51htnw8'
             target='_blank'
-            className='serviceRegister__btn'>
+            className='serviceRegister__btn'
+            rel='noreferrer'>
             Register
           </a>
         </div>
@@ -38,7 +39,8 @@ const StartupServices = () => {
           <a
             href='https://forms.gle/u35abBbK9n51htnw8'
             target='_blank'
-            className='serviceRegister__btn'>
+            className='serviceRegister__btn'
+            rel='noreferrer'>
             Register
           </a>
         </div>
@@ -62,7 +64,8 @@ const StartupServices = () => {
           <a
             href='https://forms.gle/u35abBbK9n51htnw8'
             target='_blank'
-            className='serviceRegister__btn'>
+            className='serviceRegister__btn'
+            rel='noreferrer'>
             Register
           </a>
         </div>

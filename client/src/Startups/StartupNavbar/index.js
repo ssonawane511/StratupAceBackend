@@ -36,7 +36,8 @@ const StartupNavbar = () => {
                 <a
                   className='nav-link'
                   href={`/startup/profile/${myDetails.handle}`}
-                  target='_blank'>
+                  target='_blank'
+                  rel='noreferrer'>
                   Public-Profile
                 </a>
               ) : (
