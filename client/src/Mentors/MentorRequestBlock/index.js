@@ -24,7 +24,7 @@ const MentorRequestBlock = ({ request }) => {
   return (
     <div className='MentorRequestBlock'>
       <div className='row'>
-        <div className='col-3 '>
+        <div className='col-md-3 '>
           <div className='row '>
             <div className='col-5 text-center'>
               <img

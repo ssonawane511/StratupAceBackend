@@ -296,7 +296,7 @@ const MentorOnboard = () => {
         </div>
       </div>
       <div className='row mt-50 form_area'>
-        <div className='col-3'>
+        <div className='col-md-3'>
           <img src={avatar} className='rounded-circle img_100' alt='logo' />
           <span>
             <label for='avtarUploadBtn'>

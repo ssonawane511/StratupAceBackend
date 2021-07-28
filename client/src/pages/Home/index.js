@@ -88,25 +88,25 @@ const Home = () => {
           </div>
         </div>
         <div className='row mt-2'>
-          <div className='col-3'>
+          <div className='col-md-3'>
             <div className='mentor_category'>
               <h2>Marketing</h2>
               <p></p>
             </div>
           </div>
-          <div className='col-3'>
+          <div className='col-md-3'>
             <div className='mentor_category'>
               <h2>Finance</h2>
               <p></p>
             </div>
           </div>
-          <div className='col-3'>
+          <div className='col-md-3'>
             <div className='mentor_category'>
               <h2>Technology</h2>
               <p></p>
             </div>
           </div>
-          <div className='col-3'>
+          <div className='col-md-3'>
             <div className='mentor_category'>
               <h2>Strategy</h2>
               <p></p>
