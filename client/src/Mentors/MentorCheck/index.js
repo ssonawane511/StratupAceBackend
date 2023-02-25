@@ -9,6 +9,7 @@ import firebase from "firebase";
 const MentorCheck = () => {
   const history = useHistory();
   const { user, loading, claim } = useAuth();
+
   useEffect(() => {
     if (!loading)
       if (claim === "mentor") {

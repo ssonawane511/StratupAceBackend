@@ -11,6 +11,13 @@ const { request } = require("express");
 const Connections = require("../../models/Connections");
 const Messages = require("../../models/Messages");
 
+// @route   GET api/startups/test
+// @desc    get the startup details by uid
+// @access  Public
+router.get("/test", (req, res) => {
+  return res.json({ message: "test" });
+});
+
 // @route   GET api/startups/me/uid
 // @desc    get the startup details by uid
 // @access  Public
