@@ -1,1 +1,1 @@
-live link : [https://startupace-api.herokuapp.com/](https://glamorous-ruby-magpie.cyclic.cloud/)
+live link : [https://glamorous-ruby-magpie.cyclic.cloud/](https://glamorous-ruby-magpie.cyclic.cloud/)
